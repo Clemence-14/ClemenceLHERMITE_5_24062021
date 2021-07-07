@@ -6,5 +6,19 @@ fetch("http://localhost:3000/api/furniture")
 .catch(error => alert("Erreur : " + error));
 
 function createThumbnails(products) {
-    console.log(products);
+    for (const product of products) {
+        console.log(product)
+    }
 }
+
+
+
+
+
+
+/*
+const vignette = document.createElement('div');
+const mesProduits = document.getElementById('products');*/
+
+
+
