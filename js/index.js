@@ -11,6 +11,15 @@ function createThumbnails(products) {
     }
 }
 
+try {
+    const productsDiv = document.getElementById('productsDiv')
+    const productDiv = document.createElement('div')
+    productsDiv.appendChild('productDiv')
+    
+} catch (err) {
+    console.log(err);
+}
+
 
 
 
