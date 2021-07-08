@@ -9,16 +9,24 @@ function createThumbnails(products) {
     for (const product of products) {
         console.log(product)
     }
+
+    for (product of products) {
+        console.log(product.name)
+    }
+
+    for (product of products) {
+        console.log(product.price)
+    }
+
+    for (product of products) {
+        console.log(product.description)
+    }
+
+    for (product of products) {
+        console.log(product.imageUrl)
+    }
 }
 
-try {
-    const productsDiv = document.getElementById('productsDiv')
-    const productDiv = document.createElement('div')
-    productsDiv.appendChild('productDiv')
-    
-} catch (err) {
-    console.log(err);
-}
 
 
 
