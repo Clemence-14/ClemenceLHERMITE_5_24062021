@@ -32,7 +32,6 @@ function createThumbnails(products) {
 
 
 
-
 /*
 const vignette = document.createElement('div');
 const mesProduits = document.getElementById('products');*/
