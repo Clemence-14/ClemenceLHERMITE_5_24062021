@@ -6,25 +6,27 @@ fetch("http://localhost:3000/api/furniture")
 .catch(error => alert("Erreur : " + error));
 
 function createThumbnails(products) {
+    //Get products container
+    const productsContainer = document.getElementById('products')
+
     for (const product of products) {
         console.log(product)
+
+    //Create one product container
+    const productContainer = document.createElement('div')
+    productContainer.classList.add('product')
+    productsContainer.appendChild(productContainer)
+
+
+    //Create product image
+    const productImage = document.createElement('img')
+    productImage.src = product.imageUrl
+    //Add product image to product container
+    productsContainer.appendChild(productImage)
+
     }
 
-    for (product of products) {
-        console.log(product.name)
-    }
-
-    for (product of products) {
-        console.log(product.price)
-    }
-
-    for (product of products) {
-        console.log(product.description)
-    }
-
-    for (product of products) {
-        console.log(product.imageUrl)
-    }
+ 
 }
 
 
@@ -32,9 +34,7 @@ function createThumbnails(products) {
 
 
 
-/*
-const vignette = document.createElement('div');
-const mesProduits = document.getElementById('products');*/
+
 
 
 
