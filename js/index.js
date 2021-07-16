@@ -15,6 +15,7 @@ function createThumbnails(products) {
     //Create one product container
     const productContainer = document.createElement('div')
     productContainer.classList.add('product')
+    //Add product div to product container
     productsContainer.appendChild(productContainer)
 
 
@@ -23,6 +24,27 @@ function createThumbnails(products) {
     productImage.src = product.imageUrl
     //Add product image to product container
     productsContainer.appendChild(productImage)
+
+    //Create product name
+    const productName = document.createElement('h3')
+    productName.innerHTML = product.name
+    //Add product name to product container
+    productContainer.appendChild(productName)
+    productsContainer.appendChild(productContainer)
+
+    //Create product description
+    const productDescription = document.createElement('p')
+    productDescription.innerHTML = product.description
+    //Add product description to product container
+    productContainer.appendChild(productDescription)
+    productsContainer.appendChild(productContainer)
+
+    //Create product price
+    const productPrice = document.createElement('p')
+    productPrice.innerHTML = product.price
+    //Add product price to product container
+    productContainer.appendChild(productPrice)
+    productsContainer.appendChild(productContainer)
 
     }
 
