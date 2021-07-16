@@ -1,36 +1,17 @@
-/*Dimensionnement de l'image logo*/
-h1 img {
-    width: 200px;
-}
-
-/*Changement de la police du titre H1*/
-h1 {
-    font-family: 'Architects Daughter', cursive;
-    font-weight: bold;
-}
-
-/*Pas de retour à la ligne pour le titre h2 de la table extensible*/
-h2 {
-    white-space: nowrap;
-}
-
-/*Ajustement de la taile des 5 images de meuble*/
-.vignettes .vignette img {
-    width: 350px;
-    height: 250px;
-    object-fit: cover;
-    border-radius: 2rem;
-}
-
-/*Ajustement de la hauteur de l'image de chaise vintage*/
-.vignettes .vignette .vintage img {
-    height: 500px;
-}
-
 /*Dégradé de couleurs pour la page de présentation des produits*/
 main {
     background: linear-gradient(#F0A71F, #8830EC);
 }
 
+/*Dimensionnement de l'image logo*/
+h1 img {
+    width: 200px;
+}
 
-   
+img {
+    max-width: 100%;
+    border-radius: 2rem;
+}
+
+
+
