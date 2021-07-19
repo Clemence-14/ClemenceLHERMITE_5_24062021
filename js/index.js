@@ -24,6 +24,10 @@ function createThumbnails(products) {
     productImage.src = product.imageUrl
     //Add product image to product container
     productsContainer.appendChild(productImage)
+    //Add product image to product link
+    productLink.appendChild(productImage)
+    //Add product link to productContainer
+    productContainer.appendChild(productLink)
 
     //Create product name
     const productName = document.createElement('h3')
@@ -44,8 +48,15 @@ function createThumbnails(products) {
     productPrice.innerHTML = product.price
     //Add product price to product container
     productContainer.appendChild(productPrice)
+    
+    //Add productContainer to productsContainer
     productsContainer.appendChild(productContainer)
 
+    //Create product link
+    const productLink = document.createElement('a')
+    productLink.href = 'product.html?id=' + product._id
+
+    
     }
 
  
