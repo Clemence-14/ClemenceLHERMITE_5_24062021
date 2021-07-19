@@ -18,16 +18,24 @@ function createThumbnails(products) {
     //Add product div to product container
     productsContainer.appendChild(productContainer)
 
+    //Create productLink
+    const productLink = document.createElement('a')
+    productLink.href = 'product.html?id=' + product._id
+
+
 
     //Create product image
     const productImage = document.createElement('img')
     productImage.src = product.imageUrl
     //Add product image to product container
     productsContainer.appendChild(productImage)
-    //Add product image to product link
-    productLink.appendChild(productImage)
-    //Add product link to productContainer
+    //Add productImage to productLink
+    productContainer.appendChild(productImage)
+    //Add productLink to productContainer
     productContainer.appendChild(productLink)
+    
+    
+    
 
     //Create product name
     const productName = document.createElement('h3')
@@ -52,10 +60,7 @@ function createThumbnails(products) {
     //Add productContainer to productsContainer
     productsContainer.appendChild(productContainer)
 
-    //Create product link
-    const productLink = document.createElement('a')
-    productLink.href = 'product.html?id=' + product._id
-
+    
     
     }
 
