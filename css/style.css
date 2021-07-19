@@ -1,17 +1,38 @@
 /*Dégradé de couleurs pour la page de présentation des produits*/
 main {
     background: linear-gradient(#F0A71F, #8830EC);
+    padding-bottom: 2rem;
 }
 
 /*Dimensionnement de l'image logo*/
 h1 img {
     width: 200px;
+    height: 80px;
+    margin-left: 1.5rem;
+    
 }
 
 img {
     max-width: 100%;
+    height: 20rem;
     border-radius: 2rem;
+    display: block;
+    margin: auto;
 }
+
+.product {
+    background-color: rgb(250, 218, 238);
+    border-radius: 0.5rem;
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    max-width: 70%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+  
 
 
 
