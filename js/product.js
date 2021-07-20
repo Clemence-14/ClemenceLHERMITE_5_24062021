@@ -25,4 +25,16 @@ const createProduct = product => {
   const productImage = document.getElementById('product-image')
   productImage.src = product.imageUrl
   productImage.alt = product.name
+
+  //Edit product price
+  const productPrice = document.getElementById('product-price')
+  productPrice.innerHTML = product.price
+
+  //Edit product description
+  const productDescription = document.getElementById('product-description')
+  productDescription.innerHTML = product.description
+
+  //Edit product varnish
+  const productVarnish = document.getElementById('product-varnish')
+  productVarnish.innerHTML = product.varnish
 }
