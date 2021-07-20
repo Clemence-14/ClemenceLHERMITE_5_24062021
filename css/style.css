@@ -12,6 +12,7 @@ h1 img {
     
 }
 
+/*Dimmensionnement et positionnement des images présentation des produits*/
 img {
     max-width: 100%;
     height: 20rem;
@@ -20,6 +21,7 @@ img {
     margin: auto;
 }
 
+/*Mise en page de chaque produit page d'accueil*/
 .product {
     background-color: rgb(250, 218, 238);
     border-radius: 0.5rem;
@@ -33,6 +35,29 @@ img {
 }
 
   
+/*Mise en page de chaque page individuelle du produit*/
+#product-description {
+    font-size: x-large;
+    font-weight: bold;
+    margin-top: 2rem;
+    margin-left: 2rem;
+}
 
+#product-price {
+    font-size: x-large;
+    margin-left: 2rem;
+}
 
+#product-varnish {
+    font-size: x-large;
+    margin-left: 2rem;
+}
 
+#product-name {
+    margin-bottom: 4rem;
+    margin-left: 2rem;
+    padding-top: 2rem;
+    font-size: 50px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-decoration: underline rgb(185, 26, 185);
+}
