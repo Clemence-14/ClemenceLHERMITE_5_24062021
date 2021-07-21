@@ -15,8 +15,7 @@ function createThumbnails(products) {
     //Create one product container
     const productContainer = document.createElement('div')
     productContainer.classList.add('product')
-    //Add product div to product container
-    productsContainer.appendChild(productContainer)
+    
 
     //Create productLink
     const productLink = document.createElement('a')
@@ -27,8 +26,6 @@ function createThumbnails(products) {
     //Create product image
     const productImage = document.createElement('img')
     productImage.src = product.imageUrl
-    //Add product image to product container
-    productsContainer.appendChild(productImage)
     //Add productImage to productLink
     productContainer.appendChild(productImage)
     //Add productLink to productContainer
@@ -42,14 +39,14 @@ function createThumbnails(products) {
     productName.innerHTML = product.name
     //Add product name to product container
     productContainer.appendChild(productName)
-    productsContainer.appendChild(productContainer)
+    
 
     //Create product description
     const productDescription = document.createElement('p')
     productDescription.innerHTML = product.description
     //Add product description to product container
     productContainer.appendChild(productDescription)
-    productsContainer.appendChild(productContainer)
+    
 
     //Create product price
     const productPrice = document.createElement('p')
