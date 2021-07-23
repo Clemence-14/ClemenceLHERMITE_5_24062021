@@ -48,5 +48,17 @@ const createProduct = product => {
 
     //Add option to select
     productOptions.appendChild(productOption)
+
+
+    const cart = document.getElementById('cart')
+   
+
+    //Local storage
+    localStorage.removeItem('Cross table');
+    localStorage.removeItem('59900');
+
+    //Valeur dans le local storage
+    localStorage.setItem('cart', '59900')
+    
   }
 }
