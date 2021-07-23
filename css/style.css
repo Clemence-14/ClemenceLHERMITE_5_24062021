@@ -62,8 +62,20 @@ img {
     text-decoration: underline rgb(185, 26, 185);
 }
 
-
+/*Changement de la couleur de fond et margin pour le choix des vernis*/
 #product-options {
     margin-left: 2rem;
     background-color: #c8a0f5;
+}
+
+/*Changement de la couleur de fond, margin et enlèvement des bordures du bouton ajouter au panier*/
+#cart {
+    margin-left: 2rem;
+    background-color: #c8a0f5;
+    border: none;
+}
+
+/*Au survol du bouton ajouter au panier, changement de la couleur de fond*/
+input#cart:hover {
+    background-color: #F0A71F;
 }
