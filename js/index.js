@@ -64,7 +64,14 @@ function createThumbnails(products) {
  
 }
 
-
+const cart = [
+    1,
+    4,
+    3,
+    1
+  ]
+  
+  localStorage.set('cart', cart)
 
 
 
