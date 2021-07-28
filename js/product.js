@@ -49,16 +49,9 @@ const createProduct = product => {
 
     //Add option to select
     productOptions.appendChild(productOption)
+
     
   }
 }
 
 
-const cart = [
-  1,
-  4,
-  3,
-  1
-]
-
-localStorage.setItem('cart', cart)
