@@ -58,14 +58,11 @@ function createThumbnails(products) {
     //Add productContainer to productsContainer
     productsContainer.appendChild(productContainer)
 
-    
-    
-    }
-
- 
 }
 
+}
 
+localStorage.removeItem('cart', '1,4,3,1')
 
 
 
