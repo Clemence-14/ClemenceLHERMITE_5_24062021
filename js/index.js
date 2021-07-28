@@ -20,6 +20,7 @@ function createThumbnails(products) {
     //Create productLink
     const productLink = document.createElement('a')
     productLink.href = 'product.html?id=' + product._id
+    
 
 
 
@@ -27,7 +28,7 @@ function createThumbnails(products) {
     const productImage = document.createElement('img')
     productImage.src = product.imageUrl
     //Add productImage to productLink
-    productContainer.appendChild(productImage)
+    productLink.appendChild(productImage)
     //Add productLink to productContainer
     productContainer.appendChild(productLink)
     
@@ -64,14 +65,7 @@ function createThumbnails(products) {
  
 }
 
-const cart = [
-    1,
-    4,
-    3,
-    1
-  ]
-  
-  localStorage.set('cart', cart)
+
 
 
 
