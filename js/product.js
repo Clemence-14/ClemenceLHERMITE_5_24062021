@@ -50,8 +50,30 @@ const createProduct = product => {
     //Add option to select
     productOptions.appendChild(productOption)
 
+    //On pointe le bouton AddToCart 
+    const addToCartButton = document.getElementById('cart')
+
+    //On ajoute un écouteur d'événement sur le clic
+    addToCartButton.addEventListener('click', (event) => {
+      console.log('le produit' + productId + 'a été ajouté au panier')
+    })
     
   }
 }
 
+//On récupère le tableau cart en session
+let cart = localStorage.getItem('cart')
+
+if (cart ===null) {
+  //Le panier n'existe pas en session, on doit le créer
+  cart = [
+    productId
+  ]
+} else {
+  //Le panier existe en session, on doit ajouter l'id du produit
+  cart = [
+    productId
+  ]
+}
+localStorage.setItem('cart', cart)
 
