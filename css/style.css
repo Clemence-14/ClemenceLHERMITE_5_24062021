@@ -79,3 +79,32 @@ img {
 input#cart:hover {
     background-color: #F0A71F;
 }
+
+/*Mise en forme du formulaire*/
+#myform label {
+    font-weight: bold;
+}
+
+#username, #usermail, #phone, #adress, #code, #city {
+    background-color: #ffffffab;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+input {
+    border-radius: 0.5rem;
+    background-color: #c8a0f5;
+}
+
+input:hover {
+    background-color: #8830EC;
+}
+
+/*Changement de la couleur de fond et mise en gras de la quantité à choisir pr produit*/
+select#qt {
+    background-color: #c8a0f5;
+}
+
+label {
+    font-weight: bold;
+}
