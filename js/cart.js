@@ -1,3 +1,26 @@
+fetch("http://localhost:3000/api/furniture")
+.then(response => response.json())
+.then(response => {
+    createThumbnails(response);
+})
+.catch(error => alert("Erreur : " + error));
+   
+
+function createThumbnails(cart) {
+    const table = document.getElementById('cart-rows')
+    for (const cart of cart-rows){
+        console.log(cart)
+
+        //Create product name
+    const name = document.createElement('th')
+    name.innerHTML = cart.name
+    //Add product name to product container
+    cart.appendChild(name)
+    }
+}
+
+
+
 //Récupération du formulaire
 let form = document.getElementById("myform");
 
@@ -20,4 +43,6 @@ form.onsubmit = function() {
 
     
 }
+
+
 
