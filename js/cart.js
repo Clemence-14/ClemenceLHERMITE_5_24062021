@@ -10,12 +10,8 @@ function createThumbnails(cart) {
     const table = document.getElementById('cart-rows')
     for (const cart of cart-rows){
         console.log(cart)
+    
 
-        //Create product name
-    const name = document.createElement('th')
-    name.innerHTML = cart.name
-    //Add product name to product container
-    cart.appendChild(name)
     }
 }
 
