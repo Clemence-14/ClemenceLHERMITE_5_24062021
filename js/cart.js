@@ -1,23 +1,39 @@
-fetch("http://localhost:3000/api/furniture")
-.then(response => response.json())
-.then(response => {
-    createThumbnails(response);
-})
-.catch(error => alert("Erreur : " + error));
-   
+// On récupère l'objet cart en session
+let cart = window.localStorage.getItem('cart')
 
-function createThumbnails(cart) {
-    const table = document.getElementById('cart-rows')
-    for (const cart of cart-rows){
-        console.log(cart)
-    
 
+
+const tableProducts = cart => {
+    const cartTable = document.getElementById('cart-rows')
+
+    for (const product of cart) {
+        const productTr = document.createElement('tr')
+
+        const productImageTd = document.createElement('td')
+        const productImage = document.createElement('img')
+        productImage.src = product.image
+        productImageTd.appendChild(productImage)
+        productTr.appendChild(productImageTd)
+
+        cartTable.appendChild(productTr)
     }
+}
+
+if (cart === null) {
+    const infoMessage = document.getElementById('info')
+    infoMessage.innerHTML = 'Votre panier est vide'
+
+    const orderForm = document.getElementById('orderform')
+    orderForm.style.display = 'none'
+} else {
+    cart = JSON.parse(cart)
+    tableProducts(cart)
 }
 
 
 
-//Récupération du formulaire
+
+/*//Récupération du formulaire
 let form = document.getElementById("myform");
 
 
@@ -38,7 +54,7 @@ form.onsubmit = function() {
     }
 
     
-}
+}*/
 
 
 
