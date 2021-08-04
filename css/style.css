@@ -76,7 +76,7 @@ img {
 }
 
 /*Au survol du bouton ajouter au panier, changement de la couleur de fond*/
-input#cart:hover {
+button#cart:hover {
     background-color: #F0A71F;
 }
 
