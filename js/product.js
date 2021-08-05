@@ -63,15 +63,17 @@ const createProduct = product => {
   const addToCart = product => {
     // On récupère l'objet cart en session
     let cart = window.localStorage.getItem('cart')
-
+    
     if (cart === null) {
       // Si l'objet n'existe pas en session, on le crée
       cart = []
     } else {
       // Sinon on le transforme en tableau
       cart = JSON.parse(cart)
+      
     }
 
+  
     //On ajoute le produit à notre tableau
     cart.push({
       id: product._id,
@@ -80,17 +82,26 @@ const createProduct = product => {
     })
 
     // On transforme le tableau en objet JSON et on l'ajoute en session
-    window.localStorage.setItem('cart', JSON.stringify(cart))
+    window.localStorage.setItem('cart' ,JSON.stringify(cart)) 
 
     if (
       window.confirm(
         'Le produit a été ajouté au panier. Voulez-vous voir votre panier?'
       )
-    ) {
+    ){
       window.location.href = 'cart.html'
     }
+  }
+      
+
+      
+      
+      
+     
+     
+    
 
     
-  }
+  
 
 
