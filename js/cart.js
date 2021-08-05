@@ -1,11 +1,11 @@
 // On récupère l'objet cart en session
 let cart = window.localStorage.getItem('cart')
 
-
+console.log(cart)
 
 const tableProducts = cart => {
     const cartTable = document.getElementById('cart-rows')
-
+    
     for (const product of cart) {
         const productTr = document.createElement('tr')
 
@@ -23,7 +23,7 @@ if (cart === null) {
     const infoMessage = document.getElementById('info')
     infoMessage.innerHTML = 'Votre panier est vide'
 
-    const orderForm = document.getElementById('orderform')
+    const orderForm = document.getElementById('orderForm')
     orderForm.style.display = 'none'
 } else {
     cart = JSON.parse(cart)
