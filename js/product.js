@@ -57,7 +57,6 @@ const createProduct = product => {
     addToCartButton.addEventListener('click', event => {
       addToCart(product)
     })
-    
   }
 
   const addToCart = product => {
@@ -94,6 +93,14 @@ const createProduct = product => {
   }
       
 
+
+
+
+
+  
+
+
+      
       
       
       
