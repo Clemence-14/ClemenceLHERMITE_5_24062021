@@ -14,6 +14,7 @@ h1 img {
 
 /*Dimmensionnement et positionnement des images présentation des produits*/
 img {
+    padding-top: 1rem;
     max-width: 100%;
     height: 20rem;
     border-radius: 2rem;
