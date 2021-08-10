@@ -6,6 +6,7 @@ console.log(cart)
 const tableProducts = cart => {
     const cartTable = document.getElementById('cart-rows')
     
+    
     for (const product of cart) {
         const productTr = document.createElement('tr')
 
@@ -15,7 +16,26 @@ const tableProducts = cart => {
         productImageTd.appendChild(productImage)
         productTr.appendChild(productImageTd)
 
+        const productNameTd = document.createElement('td')
+        const nameProduct = document.createElement('name')
+        nameProduct.innerHTML = product.name
+        productNameTd.appendChild(nameProduct)
+        productTr.appendChild(productNameTd)
+        
+        const productPriceTd = document.createElement('td')
+        const priceProduct = document.createElement('price')
+        priceProduct.innerHTML = product.price
+        productPriceTd.appendChild(priceProduct)
+        productTr.appendChild(productPriceTd)
+        
+
         cartTable.appendChild(productTr)
+       
+         
+  
+        
+
+        
     }
 }
 
@@ -26,7 +46,7 @@ if (cart === null) {
     const orderForm = document.getElementById('orderForm')
     orderForm.style.display = 'none'
 } else {
-    cart = JSON.parse(cart)
+    
     tableProducts(cart)
 }
 
