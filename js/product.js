@@ -29,7 +29,7 @@ const createProduct = product => {
 
   //Edit product price
   const productPrice = document.getElementById('product-price')
-  productPrice.innerHTML = product.price
+  productPrice.innerHTML = product.price/100 //Passage du prix en centimes en euros
   
 
   //Edit product description
@@ -53,63 +53,47 @@ const createProduct = product => {
 
   }
 
- 
-  // Gestion du panier
-  // Récupération des données sélectionnées par l'utilisateur et envoie du panier
+  // On pointe le bouton AddToCart
+  const addToCartButton = document.getElementById('cart')
 
-  // Sélection de l'id du formulaire
-  const idForm = document.querySelector("#qt");
+  // On ajoute un écouteur d'événement sur le clic
+  addToCartButton.addEventListener('click', event => {
+    addToCart('product')
 
-
-  // Sélection du bouton Ajouter au panier
-  const cart = document.querySelector("#cart");
-  console.log(cart);
-
-  // Écouter le bouton et envoyer au panier
-  cart.addEventListener("click", (event)=>{
-    event.preventDefault();
-
-    // Mettre le choix de l'utilisateur dans une variable
-  const choixForm = idForm.value;
-  console.log(choixForm);
-
-    // Récupération des valeurs du formulaire quantité
-  let qt = {
-    qt : choixForm,
-    }
-
-  console.log(qt);
-
-  // Récupération des valeurs dans le main de product.html
-  const nomProduit = document.querySelector("#product-name")
-  console.log(nomProduit)
-
-  const prixProduit = document.querySelector("#product-price")
-  console.log(prixProduit)
-
-  const imageProduit = document.querySelector("#product-image")
-  console.log(imageProduit)
-
-  const optionProduit = document.querySelector("#product-options")
-  console.log(optionProduit)
+  })
 
 
-  
-  
-  
-    // LOCAL STORAGE
-  // Stocker la récupération des valeurs du formaulaire dans le local storage
+const addToCart = product => {
+  // On récupère l'objet cart en session
+  let cart = window.localStorage.getItem('cart')
+
+  if (cart === null) {
+    // Si l'objet' n'existe pas en session, on le crée
+    cart = []
+  } else {
+    // Sinon on le transforme en tableau
+    cart = JSON.parse(cart)
+  }
+
+  // On ajoute le produit à notre tableau
+  cart.push({
+    id: product._id,
+    image: product.imageUrl,
+    name: product.name,
+    price: product.price
+  })
+
+  // On transforme le tableau en objet JSON, et on l'ajoute en session
+  window.localStorage.setItem('cart', JSON.stringify(cart))
 
   if (
     window.confirm(
-      'Le produit a été ajouté au panier. Voulez-vous voir votre panier?'
+      'Le produit a été ajouté au panier. Voulez-vous voir votre panier ?'
     )
-    
-  ){
+  ) {
     window.location.href = 'cart.html'
   }
 }
-  )
 
   
 
