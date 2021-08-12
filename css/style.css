@@ -1,16 +1,24 @@
 /*Dégradé de couleurs pour la page de présentation des produits*/
 main {
     background: linear-gradient(#F0A71F, #8830EC);
+    padding-top: 2rem;
     padding-bottom: 2rem;
+    margin-top: -1rem;
 }
 
 /*Dimensionnement de l'image logo*/
-h1 img {
-    width: 200px;
-    height: 80px;
-    margin-left: 1.5rem;
-    
+header img {
+    height: 30%;
+    width: 30%;
+    margin-left: 0;
 }
+/*Mise en gras du mot accueil et changement de taille ainsi que déplacement vers la gauche*/
+a.nav-link {
+    font-weight: bold;
+    font-size: xx-large;
+    display: flex;
+    margin-right: 3rem;
+    }
 
 /*Dimmensionnement et positionnement des images présentation des produits*/
 img {
@@ -109,3 +117,4 @@ select#qt {
 label {
     font-weight: bold;
 }
+
