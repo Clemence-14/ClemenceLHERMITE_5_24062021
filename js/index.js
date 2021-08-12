@@ -51,7 +51,7 @@ function createThumbnails(products) {
 
     //Create product price
     const productPrice = document.createElement('p')
-    productPrice.innerHTML = product.price
+    productPrice.innerHTML = product.price/100 //Passage du prix en centime en euros
     //Add product price to product container
     productContainer.appendChild(productPrice)
     
