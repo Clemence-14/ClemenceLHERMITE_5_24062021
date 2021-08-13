@@ -18,6 +18,8 @@ const tableProducts = cart => {
         productImage.classList.add('image')
         productImageTd.appendChild(productImage)
         productTr.appendChild(productImageTd)
+        
+        
 
         const productNameTd = document.createElement('td')
         const nameProduct = document.createElement('h3')
@@ -37,15 +39,10 @@ const tableProducts = cart => {
 
         cartTable.appendChild(productTr)
         
-        
-       
-         
-  
-        
-
-        
     }
 }
+
+
 
 if (cart === null) {
     const infoMessage = document.getElementById('info')
@@ -61,6 +58,8 @@ if (cart === null) {
 //Bouton supprimer 
 let btn_supprimer = document.querySelectorAll("btn-supprimer");
 console.log(btn_supprimer);
+
+
 
 
 /*//Récupération du formulaire
