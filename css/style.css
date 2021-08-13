@@ -20,6 +20,14 @@ a.nav-link {
     margin-right: 3rem;
     }
 
+/*Ajustement sur le logo panier page d'accueil*/
+.fas.fa-shopping-cart {
+    font-size: xx-large;
+    margin-right: 1.5rem;
+    margin-top: 1rem;
+    color: rgb(192, 25, 207);
+}
+
 /*Dimmensionnement et positionnement des images présentation des produits*/
 img {
     padding-top: 1rem;
@@ -90,31 +98,62 @@ button#cart:hover {
 }
 
 /*Mise en forme du formulaire*/
-#myform label {
+#orderForm label {
     font-weight: bold;
+    padding-left: 2rem;
+}
+
+h2.form {
+    text-align: center;
+    padding-bottom: 1.5rem;
+}
+
+#orderForm {
+    background-color: rgb(255, 220, 227);
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    padding-top: 1rem;
+    margin-bottom: -2rem;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #username, #usermail, #phone, #adress, #code, #city {
     background-color: #ffffffab;
-    border-radius: 0.5rem;
     margin-bottom: 1rem;
 }
 
-input {
-    border-radius: 0.5rem;
+.submit input {
     background-color: #c8a0f5;
+    font-size: x-large;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 1rem;
 }
 
-input:hover {
+.submit {
+    text-align: center;
+}
+
+.submit input:hover {
     background-color: #8830EC;
 }
 
-/*Changement de la couleur de fond et mise en gras de la quantité à choisir pr produit*/
+/*Changement de la couleur de fond et mise en gras de la quantité à choisir par produit*/
 select#qt {
     background-color: #c8a0f5;
 }
 
 label {
     font-weight: bold;
+}
+
+/*Mise en forme du bouton supprimer sur la page panier*/
+button.btn-supprimer {
+    background-color: orange;
+    padding: 0.5rem;
+    border-radius: 1rem;
 }
 
