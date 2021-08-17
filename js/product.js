@@ -29,7 +29,7 @@ const createProduct = product => {
 
   //Edit product price
   const productPrice = document.getElementById('product-price')
-  productPrice.innerHTML = product.price/100 //Passage du prix en centimes en euros
+  productPrice.innerHTML = product.price/100 + "€" //Passage du prix en centimes en euros
   
 
   //Edit product description
@@ -94,13 +94,6 @@ const addToCart = product => {
     window.location.href = 'cart.html'
   }
 }
-
-  
-
-  
- 
-
-  
 
 
 
