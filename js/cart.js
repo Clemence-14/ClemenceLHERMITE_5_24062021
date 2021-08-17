@@ -5,44 +5,40 @@ console.log(cart)
 
 const tableProducts = cart => {
     const cartTable = document.getElementById('cart-rows')
-    
-    
+
     for (const product of cart) {
         
         const productTr = document.createElement('tr')
 
         const productImageTd = document.createElement('td')
 
-        const productImage = document.createElement('img')
-        productImage.src = product.image
-        productImage.classList.add('image')
-        productImageTd.appendChild(productImage)
+        const imageProduct = document.createElement('img')
+        imageProduct.src = product.image
+        imageProduct.classList.add('image')
+        productImageTd.appendChild(imageProduct)
         productTr.appendChild(productImageTd)
-        
-        
 
         const productNameTd = document.createElement('td')
         const nameProduct = document.createElement('h3')
-        nameProduct.classList.add('name')
         nameProduct.innerHTML = product.name
+        nameProduct.classList.add('name')
         productNameTd.appendChild(nameProduct)
         productTr.appendChild(productNameTd)
 
-        
-
         const productPriceTd = document.createElement('td')
         const priceProduct = document.createElement('p')
-        priceProduct.classList.add('price')
         priceProduct.innerHTML = product.price
+        priceProduct.classList.add('price')
         productPriceTd.appendChild(priceProduct)
         productTr.appendChild(productPriceTd)
 
+
+
+
+
         cartTable.appendChild(productTr)
-        
     }
 }
-
-
 
 if (cart === null) {
     const infoMessage = document.getElementById('info')
@@ -51,39 +47,42 @@ if (cart === null) {
     const orderForm = document.getElementById('orderForm')
     orderForm.style.display = 'none'
 } else {
-    cart = JSON.parse(JSON.stringify('cart'))
+    cart = JSON.parse(JSON.stringify(cart))
     tableProducts(cart)
 }
 
-//Bouton supprimer 
-let btn_supprimer = document.querySelectorAll("btn-supprimer");
-console.log(btn_supprimer);
-
-
-
-
-/*//Récupération du formulaire
-let form = document.getElementById("myform");
-
-
-form.onsubmit = function() {
-    let username = document.getElementById("username")
-    let usermail = document.getElementById("usermail")
-    let phone = document.getElementById("phone")
-    let adress = document.getElementById("adress")
-    let code = document.getElementById("code")
-    let city = document.getElementById("city")
-
-    if (username.value && usermail.value && phone.value && adress.value && code.value && city.value) {
-        
-       
-//Si les champs ne sont pas renseignés
-    }else {
-        alert("Veuillez saisir tous les champs");
-    }
+    
+    
 
     
-}*/
+
+        
+        
 
 
 
+        
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+    
+      /*// on récupère la valeur des champs saisis par le user
+       
+      let username = document.getElementById('username').value
+      let usermail = document.getElementById('usermail').value
+      let phone = document.getElementById('phone').value
+      let adress = document.getElementById('adress').value
+      let code = document.getElementById('code').value
+      let city = document.getElementById('city').value*/
