@@ -150,10 +150,38 @@ label {
     font-weight: bold;
 }
 
+/*Espacement des différentes catégories de l'en tête du tableau*/
+table {
+    table-layout: fixed;
+    width: 100%;
+    margin-left: 2rem;
+  }
+
 /*Mise en forme du bouton supprimer sur la page panier*/
 button.btn-supprimer {
-    background-color: orange;
+    background-color: rgb(187, 106, 253);
     padding: 0.5rem;
     border-radius: 1rem;
+}
+
+
+/*Mise en forme du bouton vider le panier sur la page panier*/
+.clear-cart {
+    background-color: rgb(187, 106, 253);
+    margin-bottom: 1rem;
+    padding-top: 1rem;
+    border-radius: 0.5rem;
+    font-size: small;
+}
+
+.clear :hover {
+    background-color: rgb(255, 214, 137);
+}
+
+/*Mise en place de prix total et du bouton vider le panier côte à côte*/
+.recap {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
