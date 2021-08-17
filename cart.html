@@ -65,6 +65,7 @@
               <th>Prix unitaire</th>
               <th><button class="btn-supprimer">Supprimer</button></th>
             </tr>
+          
           </thead>
       
         
@@ -74,8 +75,10 @@
         </table>
 
        <div class="recap">
-         <p class="total-price">Prix total</p>
-         <p class="clear-cart">Vider le panier <i class="fas fa-trash-alt"></i></p>
+         <p id="total-price">Prix total : </p>
+         <div class="clear">
+         <button class="clear-cart">Vider le panier <i class="fas fa-trash-alt"></i></p></button>
+         </div>
        </div>
 
 
@@ -102,7 +105,7 @@
           <input type="text" name="city" id="city" required/>
           </div>
           <div class="submit">
-          <input type="submit" value="Envoyer"/>
+          <input type="submit" value="Envoyer" name="submit" id="submit"/>
           </div>
         </form>
         </div>
