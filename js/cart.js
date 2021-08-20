@@ -45,11 +45,17 @@ if (cart === null) {
     infoMessage.innerHTML = 'Votre panier est vide'
 
     const orderForm = document.getElementById('orderForm')
-    orderForm.style.display = 'none'
+    orderForm.style.display = 'none' //Le formulaire de commande n'apparaît pas si le panier est vide
+    const thead = document.getElementById('thead')
+    thead.style.display = 'none' //Lorsque le panier est vide, le tableau qui affiche les produits n'apparaît pas
 } else {
     cart = JSON.parse(JSON.stringify(cart))
-    tableProducts(cart)
+    tableProducts('cart')
 }
+
+
+
+
 
     
     
