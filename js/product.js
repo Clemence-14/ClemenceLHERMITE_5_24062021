@@ -101,11 +101,3 @@ const addToCart = product => {
       
       
       
-     
-     
-    
-
-    
-  
-
-
