@@ -11,12 +11,14 @@ window
     if (Object.entries(response).length === 0) {
       window.alert('pas de produit')
     } else {
+      
       createProduct(response)
     }
   })
   .catch(error => window.alert('Erreur : ' + error))
 
 const createProduct = product => {
+  
   // Edit product name
   const productName = document.getElementById('product-name')
   productName.innerHTML = product.name
@@ -49,19 +51,19 @@ const createProduct = product => {
     productOption.innerHTML = varnish
 
     //Add option to select
-    productOptions.appendChild(productOption) }
-
+    productOptions.appendChild(productOption) 
   }
+
 
   // On pointe le bouton AddToCart
   const addToCartButton = document.getElementById('cart')
 
   // On ajoute un écouteur d'événement sur le clic
   addToCartButton.addEventListener('click', event => {
-    addToCart('product')
+    addToCart(product)
 
   })
-
+}
 
 const addToCart = product => {
   // On récupère l'objet cart en session
@@ -82,6 +84,8 @@ const addToCart = product => {
     name: product.name,
     price: product.price
   })
+console.log(product)
+console.log(JSON.stringify('cart'))
 
   // On transforme le tableau en objet JSON, et on l'ajoute en session
   window.localStorage.setItem('cart', JSON.stringify(cart))
