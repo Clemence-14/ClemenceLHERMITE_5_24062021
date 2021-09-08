@@ -1,7 +1,7 @@
 // On récupère l'objet cart en session
 let cart = JSON.parse(window.localStorage.getItem('cart'))
 
-console.log(cart)
+console.log(window.localStorage.getItem('cart'))
 
 const tableProducts = cart => {
     const cartTable = document.getElementById('cart-rows')
@@ -50,7 +50,7 @@ if (cart === null) {
     thead.style.display = 'none' //Lorsque le panier est vide, le tableau qui affiche les produits n'apparaît pas
 } else {
     cart = JSON.parse(JSON.stringify(cart))
-    tableProducts('cart')
+    tableProducts(cart)
 }
 
 
