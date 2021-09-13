@@ -150,11 +150,25 @@ label {
     font-weight: bold;
 }
 
+/*Changement du style de l'en tête du tableau*/
+thead {
+    font-size: large;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+
+
+/*Dimensionnement de l'image pour la page panier version mobile*/
+img.image {
+    height: auto;
+    width: auto;
+}
+
 /*Espacement des différentes catégories de l'en tête du tableau*/
 table {
     table-layout: fixed;
     width: 100%;
-    margin-left: 2rem;
+    text-align: center;
   }
 
 /*Mise en forme du bouton supprimer sur la page panier*/
