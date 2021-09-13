@@ -27,7 +27,7 @@ const tableProducts = cart => {
 
         const productPriceTd = document.createElement('td')
         const priceProduct = document.createElement('p')
-        priceProduct.innerHTML = product.price
+        priceProduct.innerHTML = product.price/100 + "€"
         priceProduct.classList.add('price')
         productPriceTd.appendChild(priceProduct)
         productTr.appendChild(productPriceTd)
@@ -57,38 +57,26 @@ if (cart === null) {
 
 
 
+
+    //////////PARTIE FORMULAIRE//////////
+
+   
     
     
 
     
 
-        
-        
-
-
-
-        
-    
-    
-    
-
-
-
-
-
-
-
-
-
-
-
-
-    
-      /*// on récupère la valeur des champs saisis par le user
+    // on récupère la valeur des champs saisis par l'utilisateur
        
       let username = document.getElementById('username').value
       let usermail = document.getElementById('usermail').value
       let phone = document.getElementById('phone').value
       let adress = document.getElementById('adress').value
       let code = document.getElementById('code').value
-      let city = document.getElementById('city').value*/
+      let city = document.getElementById('city').value
+
+    
+  
+  
+
+  
