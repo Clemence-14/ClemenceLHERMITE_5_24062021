@@ -82,7 +82,7 @@ const addToCart = product => {
     id: product._id,
     image: product.imageUrl,
     name: product.name,
-    price: product.price
+    price: product.price,
   })
 console.log(product)
 console.log(JSON.stringify('cart'))
@@ -101,7 +101,7 @@ console.log(JSON.stringify('cart'))
 
 
 
-      
+
       
       
       
