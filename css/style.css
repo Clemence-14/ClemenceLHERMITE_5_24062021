@@ -180,7 +180,7 @@ button.btn-supprimer {
 
 
 /*Mise en forme du bouton vider le panier sur la page panier*/
-.clear-cart {
+.clear_cart {
     background-color: rgb(187, 106, 253);
     margin-bottom: 1rem;
     padding-top: 1rem;
