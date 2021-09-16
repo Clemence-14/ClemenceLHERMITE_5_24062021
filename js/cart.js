@@ -100,7 +100,6 @@ submit.addEventListener('click', (e) => {
 
 
 
-
         
     
     
@@ -115,107 +114,222 @@ submit.addEventListener('click', (e) => {
     
     //////////PARTIE FORMULAIRE//////////
 
-//On déclare un tableau de produits pour la requête POST
-let productsTable = []
 
-const idProducts = (productsTable) => {
-
-    let cart = JSON.parse(localStorage.getItem('cart'))
-
-    productsTable = Object.values(cart).map( (data) => {
-        let qt = parseInt(data.qte)
-        console.log(typeof qt)
-        console.log(qt)
-
-        for (let i = 0 ; i< qt ; i++) {
-            productsTable.push(data._id)
-        }
-        console.log(productsTable)
-        return productsTable
-    })
-}
-
-idProducts(productsTable)
+let form = document.querySelector('#orderForm');
 
 
 
 
+/////VALIDATION EMAIL/////
 
-   // on récupère la valeur des champs saisis par l'utilisateur
-       
-      let username = document.getElementById('username').value
-      let usermail = document.getElementById('usermail').value
-      let phone = document.getElementById('phone').value
-      let adress = document.getElementById('adress').value
-      let code = document.getElementById('code').value
-      let city = document.getElementById('city').value
+//Ecouter la modification de l'email
+form.usermail.addEventListener('change', function() {
+    validUserMail(this);
+});
 
+const validUserMail = function(inputUserMail) {
+  //Creation de la reg exp pour validation email
+  let userMailRegExp = new RegExp (
+    '^[a-zA-Z0-9.-]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$','g' 
+  );
 
+  let testMail = userMailRegExp.test(inputUserMail.value);
 
-      // on met les valeurs dans un objet pour la requête POST
-    let contact = {
-        "lastName": username,
-        "firstName": username,
-        "email": usermail,
-        "phone": phone,
-        "address": adress,
-        "code": code,
-        "city": city,
-    }
+  //Récupération de la balise small
+  let small = inputUserMail.nextElementSibling;
 
-// création de l'objet obligatoire pour la requête à envoyer au serveur
-  let objet = {
-    contact,
-    productsTable
-  }
-
-  let achat = JSON.stringify(objet)
-  if (username == ''){
-    alert("Prénom incorrect")
-
-  } else if (username == ''){
-    alert("Nom incorrect")
-  } else if (usermail == ''){
-    alert("Email incorrect")
-  } else if (adress == ''){
-    alert("Adresse incorrect")
-  } else if (city == ''){
-    alert("Ville incorrect")
-   
- // console.log(achat);
- // console.log(products);
-  
-  
-  // si tout à été bien rempli, on envoi la commande au serveur, avec toutes les coordonnées du client
+    //On teste l'expression régulière
+  if(testMail) {
+    small.innerHTML = 'Mail valide';
+    small.classList.remove('text-danger')
+    small.classList.add('text-success');
   } else {
-  let request = new XMLHttpRequest()
-       request.onreadystatechange = function () {
-         if (this.readyState == XMLHttpRequest.DONE) {
-           let confirmation = JSON.parse(this.responseText)
-           sessionStorage.setItem('order', JSON.stringify(confirmation))
-           let prix = JSON.parse(sessionStorage.getItem('prixTotal'))
-           sessionStorage.setItem('prix', JSON.stringify(price))
-          console.log(typeof prix)
-          console.log( prix)
-           //une fois la requête envoyée, on est redirigé sur la page de confirmation de commande
-           window.location.href = "confirmation.html"
-         }
-       }
-  request.open("post", "http://localhost:3000/api/furniture/order")
-  request.setRequestHeader("Content-Type", "application/json")
-  request.send(achat)
-      }
+    small.innerHTML = 'Mail non valide';
+    small.classList.remove('text-success');
+    small.classList.add('text-danger');
+  }
+};
 
 
-// je récupère l'id submit,  j'effectue la fonction achat pour pouvoir récupérer les données dans la page confirmation
-let formValid = document.getElementById('submit')
-formValid.addEventListener ('click', function (e) {
-  achat(e)
-})
+/////VALIDATION NOM PRENOM/////
 
 
-    
+//Ecouter la modification du nom et prénom
+form.username.addEventListener('change', function() {
+  validUserName(this);
+});
+
+const validUserName = function(inputUserName) {
+    //Création de la regexp pour la validation nom et prénom
+    let userNameRegExp = new RegExp (
+        '^[a-z ,.-]+$', 'i'
+    );
+
+    let testName = userNameRegExp.test(inputUserName.value);
+    console.log(testName)
+
+
+    //Récupération de la balise small
+  let small_name = inputUserName.nextElementSibling;
+
+  //On teste l'expression régulière
+if(testName) {
+  small_name.innerHTML = 'Nom et prénom Valide';
+  small_name.classList.remove('text-danger')
+  small_name.classList.add('text-success');
+} else {
+  small_name.innerHTML = 'Nom et prénom non valide';
+  small_name.classList.remove('text-success');
+  small_name.classList.add('text-danger');
+}
+};
+
+
+
+/////VALIDATION NUMERO DE TELEPHONE/////
+
+
+//Ecouter la modification du numéro
+form.phone.addEventListener('change', function() {
+    validPhone(this);
+  });
+  
+  const validPhone = function(inputPhone) {
+      //Création de la regexp pour la validation nom et prénom
+      let phoneRegExp = new RegExp (
+          '^0[1-78][0-9]{8}$', 'g'
+      );
+
+      let testPhone = phoneRegExp.test(inputPhone.value);
+      
+
+      
+  
+      //Récupération de la balise small
+    let small_phone = inputPhone.nextElementSibling;
+  
+    //On teste l'expression régulière
+  if(testPhone) {
+    small_phone.innerHTML = 'Valide';
+    small_phone.classList.remove('text-danger')
+    small_phone.classList.add('text-success');
+  } else {
+    small_phone.innerHTML = 'Numéro non valide';
+    small_phone.classList.remove('text-success');
+    small_phone.classList.add('text-danger');
+  }
+  };
+
+
+
+
+  /////VALIDATION NUMERO ET RUE/////
+
+
+//Ecouter la modification du numéro et rue
+form.adress.addEventListener('change', function() {
+    validAdress(this);
+  });
+  
+  const validAdress = function(inputAdress) {
+      //Création de la regexp pour la validation nom et prénom
+      let adressRegExp = new RegExp (
+        '^[0-9]{1,3}(?:(?:[,. ]?){1}[-a-zA-Zàâäéèêëïîôöùûüç]+)*$'
+      );
+
+      let testAdress = adressRegExp.test(inputAdress.value);
+      
+        console.log(testAdress)
+      
+  
+      //Récupération de la balise small
+    let small_adress = inputAdress.nextElementSibling;
+  
+    //On teste l'expression régulière
+  if(testAdress) {
+    small_adress.innerHTML = 'Adresse Valide';
+    small_adress.classList.remove('text-danger')
+    small_adress.classList.add('text-success');
+  } else {
+    small_adress.innerHTML = 'Adresse non valide';
+    small_adress.classList.remove('text-success');
+    small_adress.classList.add('text-danger');
+  }
+  };
+
+
+
+  /////VALIDATION CODE POSTAL/////
+
+
+//Ecouter la modification du code postal
+form.code.addEventListener('change', function() {
+    validCode(this);
+  });
+  
+  const validCode = function(inputCode) {
+      //Création de la regexp pour la validation nom et prénom
+      let codeRegExp = new RegExp (
+        '^[0-9]{5}$', 'g'
+      );
+
+      let testCode = codeRegExp.test(inputCode.value);
+      
+        console.log(testCode)
+      
+  
+      //Récupération de la balise small
+    let small_code = inputCode.nextElementSibling;
+  
+    //On teste l'expression régulière
+  if(testCode) {
+    small_code.innerHTML = 'Code Valide';
+    small_code.classList.remove('text-danger')
+    small_code.classList.add('text-success');
+  } else {
+    small_code.innerHTML = 'Code non valide';
+    small_code.classList.remove('text-success');
+    small_code.classList.add('text-danger');
+  }
+  };
+
+
+  /////VALIDATION VILLE/////
+
+
+//Ecouter la modification du nom et prénom
+form.city.addEventListener('change', function() {
+    validCity(this);
+  });
+  
+  const validCity = function(inputCity) {
+      //Création de la regexp pour la validation nom et prénom
+      let cityNameRegExp = new RegExp (
+          '^[a-z ,.-]+$', 'i'
+      );
+  
+      let testCity = cityNameRegExp.test(inputCity.value);
+      console.log(testCity)
   
   
+      //Récupération de la balise small
+    let small_city = inputCity.nextElementSibling;
+  
+    //On teste l'expression régulière
+  if(testCity) {
+    small_city.innerHTML = 'Nom et prénom Valide';
+    small_city.classList.remove('text-danger')
+    small_city.classList.add('text-success');
+  } else {
+    small_city.innerHTML = 'Nom et prénom non valide';
+    small_city.classList.remove('text-success');
+    small_city.classList.add('text-danger');
+  }
+  };
+  
+
+
+
+
 
   
