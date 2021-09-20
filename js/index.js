@@ -6,25 +6,25 @@ fetch("http://localhost:3000/api/furniture")
 .catch(error => alert("Erreur : " + error));
 
 function createThumbnails(products) {
-    //Get products container
+    //Récupération de la div avec l'id products
     const productsContainer = document.getElementById('products')
 
     for (const product of products) {
         console.log(product)
 
-    //Create one product container
+    //Création du container product
     const productContainer = document.createElement('div')
     productContainer.classList.add('product')
     
 
-    //Create productLink
+    //Création du lien produit
     const productLink = document.createElement('a')
     productLink.href = 'product.html?id=' + product._id
     
 
 
 
-    //Create product image
+    //Création product image
     const productImage = document.createElement('img')
     productImage.src = product.imageUrl
     //Add productImage to productLink
@@ -35,27 +35,27 @@ function createThumbnails(products) {
     
     
 
-    //Create product name
+    //Création product name
     const productName = document.createElement('h3')
     productName.innerHTML = product.name
     //Add product name to product container
     productContainer.appendChild(productName)
     
 
-    //Create product description
+    //Création product description
     const productDescription = document.createElement('p')
     productDescription.innerHTML = product.description
     //Add product description to product container
     productContainer.appendChild(productDescription)
     
 
-    //Create product price
+    //Création product price
     const productPrice = document.createElement('p')
     productPrice.innerHTML = product.price/100 + "€" //Passage du prix en centime en euros
-    //Add product price to product container
+    //Ajout de product price à product container
     productContainer.appendChild(productPrice)
     
-    //Add productContainer to productsContainer
+    //Ajout productContainer à productsContainer
     productsContainer.appendChild(productContainer)
 
 }
