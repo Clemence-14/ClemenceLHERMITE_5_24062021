@@ -33,8 +33,16 @@ const tableProducts = cart => {
         productTr.appendChild(productPriceTd)
 
 
+      
+        const productClearTd = document.createElement('td')
+        const clearProduct = document.createElement('button')
+        const btn_clear = document.createTextNode("Supprimer l'article") //Nommer le bouton 
+        clearProduct.appendChild(btn_clear);  //Ajouter le texte au bouton                             
+        clearProduct.classList.add('clear_product')
+        productClearTd.appendChild(clearProduct)
+        productTr.appendChild(productClearTd)
 
-
+   
 
         cartTable.appendChild(productTr)
     }
@@ -72,6 +80,7 @@ clear_cart.addEventListener('click', (e) => {
 
     //rechargement de la page panier
     window.location.href = 'cart.html';
+
 });
 
 //////////FIN//////////
@@ -79,28 +88,76 @@ clear_cart.addEventListener('click', (e) => {
 
 
 //////////BOUTON CONFIRMATION DE LA COMMANDE//////////
-//Sélection du bouton vider le panier
+//Sélection du bouton confirmer la commande
 const submit = document.querySelector(".submit");
 
 
-//Suppression de la key cart dans le local storage pour vider entièrement le panier
+//Ajout d'un écouteur sur le click du bouton confirmation
 submit.addEventListener('click', (e) => {
     e.preventDefault;
+    
+    
 
-    //alert le panier a été vidé
+    //alert, la commande est validée et l'utilisateur va être redirigé
     alert('Votre commande est validée. Vous allez être redirigé vers la page de confirmation');
 
-    //rechargement de la page panier
+    //direction la page de confirmation
     window.location.href = 'confirmation.html';
+    
 });
+
+//////////FIN//////////
+
+
+//////////PRIX TOTAL//////////
+//Déclaration de la variable pour pouvoir y mettre les prix qui sont présents dans le panier
+let prixTotal = [];
+
+//Aller chercher les prix dans le panier
+for (let m = 0; m < cart.length; m++) {
+  let prixProduit = cart[m].price/100;
+
+  //Mettre les prix du panier dans la variable prixTotal
+  prixTotal.push(prixProduit)
+
+
+  console.log(prixTotal);
+  
+}
+
+
+//Additionner les prix dans le tableau de la variable prixTotal
+const reducer = (accumulator, currentValue) => accumulator + currentValue;
+const totalPrix = prixTotal.reduce(reducer, 0);
+console.log(totalPrix);
 
 //////////FIN//////////
 
 
 
 
+//////////BOUTON SUPPRIMER ARTICLE//////////
+const clear_product = document.querySelector(".clear_product");
 
-        
+
+clear_product.addEventListener('click', (e) => {
+  e.preventDefault;
+
+  const thead = document.getElementById('thead').deleteRow([1]); //Supprimer une ligne du tableau qui présente les articles page panier
+  console.log(thead)
+  
+  //removeItem pour vider le local storage
+  localStorage.removeItem('cart');
+})
+
+
+
+  
+
+
+
+
+
     
     
     
@@ -189,13 +246,13 @@ if(testName) {
 /////VALIDATION NUMERO DE TELEPHONE/////
 
 
-//Ecouter la modification du numéro
+//Ecouter la modification du numéro de téléphone
 form.phone.addEventListener('change', function() {
     validPhone(this);
   });
   
   const validPhone = function(inputPhone) {
-      //Création de la regexp pour la validation nom et prénom
+      //Création de la regexp pour la validation du numéro de téléphone
       let phoneRegExp = new RegExp (
           '^0[1-78][0-9]{8}$', 'g'
       );
@@ -210,7 +267,7 @@ form.phone.addEventListener('change', function() {
   
     //On teste l'expression régulière
   if(testPhone) {
-    small_phone.innerHTML = 'Valide';
+    small_phone.innerHTML = 'Numéro Valide';
     small_phone.classList.remove('text-danger')
     small_phone.classList.add('text-success');
   } else {
@@ -232,7 +289,7 @@ form.adress.addEventListener('change', function() {
   });
   
   const validAdress = function(inputAdress) {
-      //Création de la regexp pour la validation nom et prénom
+      //Création de la regexp pour la validation du numéro et de la rue
       let adressRegExp = new RegExp (
         '^[0-9]{1,3}(?:(?:[,. ]?){1}[-a-zA-Zàâäéèêëïîôöùûüç]+)*$'
       );
@@ -268,7 +325,7 @@ form.code.addEventListener('change', function() {
   });
   
   const validCode = function(inputCode) {
-      //Création de la regexp pour la validation nom et prénom
+      //Création de la regexp pour la validation du code postal
       let codeRegExp = new RegExp (
         '^[0-9]{5}$', 'g'
       );
@@ -283,11 +340,11 @@ form.code.addEventListener('change', function() {
   
     //On teste l'expression régulière
   if(testCode) {
-    small_code.innerHTML = 'Code Valide';
+    small_code.innerHTML = 'Code postal Valide';
     small_code.classList.remove('text-danger')
     small_code.classList.add('text-success');
   } else {
-    small_code.innerHTML = 'Code non valide';
+    small_code.innerHTML = 'Code postal non valide';
     small_code.classList.remove('text-success');
     small_code.classList.add('text-danger');
   }
@@ -297,15 +354,15 @@ form.code.addEventListener('change', function() {
   /////VALIDATION VILLE/////
 
 
-//Ecouter la modification du nom et prénom
+//Ecouter la modification de la ville
 form.city.addEventListener('change', function() {
     validCity(this);
   });
   
   const validCity = function(inputCity) {
-      //Création de la regexp pour la validation nom et prénom
+      //Création de la regexp pour la validation de la ville
       let cityNameRegExp = new RegExp (
-          '^[a-z ,.-]+$', 'i'
+          '^[a-zA-Z ,.-]+$', 'i'
       );
   
       let testCity = cityNameRegExp.test(inputCity.value);
@@ -317,11 +374,11 @@ form.city.addEventListener('change', function() {
   
     //On teste l'expression régulière
   if(testCity) {
-    small_city.innerHTML = 'Nom et prénom Valide';
+    small_city.innerHTML = 'Ville Valide';
     small_city.classList.remove('text-danger')
     small_city.classList.add('text-success');
   } else {
-    small_city.innerHTML = 'Nom et prénom non valide';
+    small_city.innerHTML = 'Ville non valide';
     small_city.classList.remove('text-success');
     small_city.classList.add('text-danger');
   }
