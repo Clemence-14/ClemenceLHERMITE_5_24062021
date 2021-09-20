@@ -43,14 +43,15 @@ const createProduct = product => {
   //Get select of options
   const productOptions = document.getElementById('product-options')
 
-  //Browse the options board 
+  //Parcourir le tableau des options
   for (const varnish of product.varnish) {
     //Edit element HTML <option>
     const productOption = document.createElement('option')
     productOption.value = varnish
     productOption.innerHTML = varnish
 
-    //Add option to select
+
+    //Ajouter option pour sélectionner
     productOptions.appendChild(productOption) 
   }
 
