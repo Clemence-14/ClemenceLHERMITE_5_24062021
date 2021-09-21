@@ -91,12 +91,47 @@ clear_cart.addEventListener('click', (e) => {
 //Sélection du bouton confirmer la commande
 const submit = document.querySelector(".submit");
 
-
 //Ajout d'un écouteur sur le click du bouton confirmation
 submit.addEventListener('click', (e) => {
     e.preventDefault;
+
+    //Récupération des valeurs du formulaire
+    const formValues = {
+      username: document.querySelector("#username").value,
+      usermail: document.querySelector("#usermail").value,
+      phone: document.querySelector("#phone").value,
+      adress: document.querySelector("#adress").value,
+      code: document.querySelector("#code").value,
+      city: document.querySelector("#city").value
+    }
+    console.log(formValues)
+    //Récupération des valeurs du formulaire pour les mettre dans le localstorage
+    localStorage.setItem('username', document.querySelector('#username').value);
+    localStorage.setItem('usermail', document.querySelector('#usermail').value);
+    localStorage.setItem('phone', document.querySelector('#phone').value);
+    localStorage.setItem('adress', document.querySelector('#adress').value);
+    localStorage.setItem('code', document.querySelector('#code').value);
+    localStorage.setItem('city', document.querySelector('#city').value);
+
     
-    
+  //Mettre les valeurs du formulaire dans un objet
+    const form = {
+      username: localStorage.getItem('username'),
+      usermail: localStorage.getItem('usermail'),
+      phone: localStorage.getItem('phone'),
+      adress: localStorage.getItem('adress'),
+      code: localStorage.getItem('code'),
+      city: localStorage.getItem('city')
+    }
+    console.log("form")
+    console.log(form)
+
+    const send = {
+      cart,
+      form
+    }
+    console.log("send")
+    console.log(send)
 
     //alert, la commande est validée et l'utilisateur va être redirigé
     alert('Votre commande est validée. Vous allez être redirigé vers la page de confirmation');
@@ -106,30 +141,34 @@ submit.addEventListener('click', (e) => {
     
 });
 
+
 //////////FIN//////////
 
 
 //////////PRIX TOTAL//////////
-//Déclaration de la variable pour pouvoir y mettre les prix qui sont présents dans le panier
+
 let prixTotal = [];
 
 //Aller chercher les prix dans le panier
 for (let m = 0; m < cart.length; m++) {
   let prixProduit = cart[m].price/100;
 
-  //Mettre les prix du panier dans la variable prixTotal
+//Mettre les prix du panier dans la variable prixTotal
   prixTotal.push(prixProduit)
-
 
   console.log(prixTotal);
   
 }
 
-
 //Additionner les prix dans le tableau de la variable prixTotal
 const reducer = (accumulator, currentValue) => accumulator + currentValue;
 const totalPrix = prixTotal.reduce(reducer, 0);
 console.log(totalPrix);
+
+//Déclaration de la variable pour pouvoir y mettre les prix qui sont présents dans le panier
+const totalPrice = document.getElementById('total-price').innerHTML = "Prix total :" + totalPrix + "€";
+console.log(totalPrice)
+  
 
 //////////FIN//////////
 
@@ -148,34 +187,15 @@ clear_product.addEventListener('click', (e) => {
   
   //removeItem pour vider le local storage
   localStorage.removeItem('cart');
+
+  
 })
 
 
-
-  
-
-
-
-
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    //////////PARTIE FORMULAIRE//////////
+//////////PARTIE FORMULAIRE//////////
 
 
 let form = document.querySelector('#orderForm');
-
-
-
 
 /////VALIDATION EMAIL/////
 
