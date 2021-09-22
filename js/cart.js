@@ -89,10 +89,10 @@ clear_cart.addEventListener('click', (e) => {
 
 //////////BOUTON CONFIRMATION DE LA COMMANDE//////////
 //Sélection du bouton confirmer la commande
-const submit = document.querySelector(".submit");
+const orderForm = document.getElementById('orderForm');
 
 //Ajout d'un écouteur sur le click du bouton confirmation
-submit.addEventListener('click', (e) => {
+orderForm.addEventListener('submit', (e) => {
     e.preventDefault;
 
     //Récupération des valeurs du formulaire
@@ -104,6 +104,7 @@ submit.addEventListener('click', (e) => {
       code: document.querySelector("#code").value,
       city: document.querySelector("#city").value
     }
+
     console.log(formValues)
     //Récupération des valeurs du formulaire pour les mettre dans le localstorage
     localStorage.setItem('username', document.querySelector('#username').value);
@@ -115,7 +116,7 @@ submit.addEventListener('click', (e) => {
 
     
   //Mettre les valeurs du formulaire dans un objet
-    const form = {
+    const contact = {
       username: localStorage.getItem('username'),
       usermail: localStorage.getItem('usermail'),
       phone: localStorage.getItem('phone'),
@@ -123,15 +124,30 @@ submit.addEventListener('click', (e) => {
       code: localStorage.getItem('code'),
       city: localStorage.getItem('city')
     }
-    console.log("form")
-    console.log(form)
+    
 
     const send = {
       cart,
-      form
+      contact
     }
-    console.log("send")
-    console.log(send)
+
+     fetch('http://localhost:3000/api/furniture/orders', {
+      method: 'POST',
+      body: JSON.stringify(send)
+    })
+    console.log('promise01')
+    console.log(promise01)
+
+    promise01.then(async(response) => {
+      try{
+
+        const content = await response.json()
+      
+      }catch(e){
+        console.log(e)
+      }
+    })
+
 
     //alert, la commande est validée et l'utilisateur va être redirigé
     alert('Votre commande est validée. Vous allez être redirigé vers la page de confirmation');
@@ -143,6 +159,8 @@ submit.addEventListener('click', (e) => {
 
 
 //////////FIN//////////
+
+
 
 
 //////////PRIX TOTAL//////////
@@ -163,7 +181,7 @@ for (let m = 0; m < cart.length; m++) {
 //Additionner les prix dans le tableau de la variable prixTotal
 const reducer = (accumulator, currentValue) => accumulator + currentValue;
 const totalPrix = prixTotal.reduce(reducer, 0);
-console.log(totalPrix);
+
 
 //Déclaration de la variable pour pouvoir y mettre les prix qui sont présents dans le panier
 const totalPrice = document.getElementById('total-price').innerHTML = "Prix total :" + totalPrix + "€";
@@ -171,6 +189,8 @@ console.log(totalPrice)
   
 
 //////////FIN//////////
+
+
 
 
 
@@ -211,6 +231,7 @@ const validUserMail = function(inputUserMail) {
   );
 
   let testMail = userMailRegExp.test(inputUserMail.value);
+  console.log(testMail)
 
   //Récupération de la balise small
   let small = inputUserMail.nextElementSibling;
@@ -228,7 +249,7 @@ const validUserMail = function(inputUserMail) {
 };
 
 
-/////VALIDATION NOM PRENOM/////
+/////VALIDATION NOM/////
 
 
 //Ecouter la modification du nom et prénom
@@ -251,67 +272,60 @@ const validUserName = function(inputUserName) {
 
   //On teste l'expression régulière
 if(testName) {
-  small_name.innerHTML = 'Nom et prénom Valide';
+  small_name.innerHTML = 'Nom Valide';
   small_name.classList.remove('text-danger')
   small_name.classList.add('text-success');
 } else {
-  small_name.innerHTML = 'Nom et prénom non valide';
+  small_name.innerHTML = 'Nom non valide';
   small_name.classList.remove('text-success');
   small_name.classList.add('text-danger');
 }
 };
 
+/////VALIDATION PRENOM/////
+//Ecouter la modification du nom et prénom
+form.userlastname.addEventListener('change', function() {
+  validUserLastName(this);
+});
+
+const validUserLastName = function(inputUserLastName) {
+    //Création de la regexp pour la validation nom et prénom
+    let userLastNameRegExp = new RegExp (
+        '^[a-z ,.-]+$', 'i'
+    );
+
+    let testLastName = userLastNameRegExp.test(inputUserLastName.value);
+    console.log(testLastName)
 
 
-/////VALIDATION NUMERO DE TELEPHONE/////
+    //Récupération de la balise small
+  let small_lastName = inputUserLastName.nextElementSibling;
+
+  //On teste l'expression régulière
+if(testLastName) {
+  small_lastName.innerHTML = 'Prénom Valide';
+  small_lastName.classList.remove('text-danger')
+  small_lastName.classList.add('text-success');
+} else {
+  small_lastName.innerHTML = 'Prénom non valide';
+  small_lastName.classList.remove('text-success');
+  small_lastName.classList.add('text-danger');
+}
+};
 
 
-//Ecouter la modification du numéro de téléphone
-form.phone.addEventListener('change', function() {
-    validPhone(this);
-  });
-  
-  const validPhone = function(inputPhone) {
-      //Création de la regexp pour la validation du numéro de téléphone
-      let phoneRegExp = new RegExp (
-          '^0[1-78][0-9]{8}$', 'g'
-      );
-
-      let testPhone = phoneRegExp.test(inputPhone.value);
-      
-
-      
-  
-      //Récupération de la balise small
-    let small_phone = inputPhone.nextElementSibling;
-  
-    //On teste l'expression régulière
-  if(testPhone) {
-    small_phone.innerHTML = 'Numéro Valide';
-    small_phone.classList.remove('text-danger')
-    small_phone.classList.add('text-success');
-  } else {
-    small_phone.innerHTML = 'Numéro non valide';
-    small_phone.classList.remove('text-success');
-    small_phone.classList.add('text-danger');
-  }
-  };
+  /////VALIDATION Adresse/////
 
 
-
-
-  /////VALIDATION NUMERO ET RUE/////
-
-
-//Ecouter la modification du numéro et rue
+//Ecouter la modification de l'adresse
 form.adress.addEventListener('change', function() {
     validAdress(this);
   });
   
   const validAdress = function(inputAdress) {
-      //Création de la regexp pour la validation du numéro et de la rue
+      //Création de la regexp pour la validation de l'adresse
       let adressRegExp = new RegExp (
-        '^[0-9]{1,3}(?:(?:[,. ]?){1}[-a-zA-Zàâäéèêëïîôöùûüç]+)*$'
+        '^[0-9]{1,3}(?:(?:[,. ]?){1}[-a-zA-Zàâäéèêëïîôöùûüç]+)*$', 
       );
 
       let testAdress = adressRegExp.test(inputAdress.value);
@@ -334,41 +348,6 @@ form.adress.addEventListener('change', function() {
   }
   };
 
-
-
-  /////VALIDATION CODE POSTAL/////
-
-
-//Ecouter la modification du code postal
-form.code.addEventListener('change', function() {
-    validCode(this);
-  });
-  
-  const validCode = function(inputCode) {
-      //Création de la regexp pour la validation du code postal
-      let codeRegExp = new RegExp (
-        '^[0-9]{5}$', 'g'
-      );
-
-      let testCode = codeRegExp.test(inputCode.value);
-      
-        console.log(testCode)
-      
-  
-      //Récupération de la balise small
-    let small_code = inputCode.nextElementSibling;
-  
-    //On teste l'expression régulière
-  if(testCode) {
-    small_code.innerHTML = 'Code postal Valide';
-    small_code.classList.remove('text-danger')
-    small_code.classList.add('text-success');
-  } else {
-    small_code.innerHTML = 'Code postal non valide';
-    small_code.classList.remove('text-success');
-    small_code.classList.add('text-danger');
-  }
-  };
 
 
   /////VALIDATION VILLE/////
