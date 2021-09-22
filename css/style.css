@@ -118,7 +118,7 @@ h2.form {
     margin-right: auto;
 }
 
-#username, #usermail, #phone, #adress, #code, #city {
+#username, #userlastname, #usermail, #phone, #adress, #city {
     background-color: #ffffffab;
     margin-bottom: 1rem;
 }
