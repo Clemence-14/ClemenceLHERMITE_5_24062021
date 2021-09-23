@@ -96,66 +96,43 @@ orderForm.addEventListener('submit', (e) => {
     e.preventDefault;
 
     //Récupération des valeurs du formulaire
-    const formValues = {
+    const contact = {
       username: document.querySelector("#username").value,
+      userlastname: document.querySelector("#userlastname").value,
       usermail: document.querySelector("#usermail").value,
-      phone: document.querySelector("#phone").value,
       adress: document.querySelector("#adress").value,
-      code: document.querySelector("#code").value,
       city: document.querySelector("#city").value
     }
-
-    console.log(formValues)
-    //Récupération des valeurs du formulaire pour les mettre dans le localstorage
-    localStorage.setItem('username', document.querySelector('#username').value);
-    localStorage.setItem('usermail', document.querySelector('#usermail').value);
-    localStorage.setItem('phone', document.querySelector('#phone').value);
-    localStorage.setItem('adress', document.querySelector('#adress').value);
-    localStorage.setItem('code', document.querySelector('#code').value);
-    localStorage.setItem('city', document.querySelector('#city').value);
-
     
-  //Mettre les valeurs du formulaire dans un objet
-    const contact = {
-      username: localStorage.getItem('username'),
-      usermail: localStorage.getItem('usermail'),
-      phone: localStorage.getItem('phone'),
-      adress: localStorage.getItem('adress'),
-      code: localStorage.getItem('code'),
-      city: localStorage.getItem('city')
-    }
-    
-
     const send = {
       cart,
       contact
     }
 
-     fetch('http://localhost:3000/api/furniture/orders', {
-      method: 'POST',
-      body: JSON.stringify(send)
-    })
-    console.log('promise01')
-    console.log(promise01)
-
-    promise01.then(async(response) => {
-      try{
-
-        const content = await response.json()
-      
-      }catch(e){
-        console.log(e)
-      }
-    })
-
-
-    //alert, la commande est validée et l'utilisateur va être redirigé
-    alert('Votre commande est validée. Vous allez être redirigé vers la page de confirmation');
-
-    //direction la page de confirmation
-    window.location.href = 'confirmation.html';
     
+ fetch("http://localhost:3000/api/furniture/order")
+.then(response => response.json())
+.then(response => {
+  if (Object.entries(response).length === 0) {
+    window.location.href = 'confirmation.html'
+  } else {
+    
+    createProduct(response)
+  }
+
+    
+})
+.catch(error => alert("Erreur : " + error));
+      
+
+
+
+  //alert, la commande est validée et l'utilisateur va être redirigé
+    alert('Votre commande est validée. Vous allez être redirigé vers la page de confirmation');
 });
+    
+    
+
 
 
 //////////FIN//////////
