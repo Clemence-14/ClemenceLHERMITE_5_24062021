@@ -102,13 +102,16 @@ orderForm.addEventListener('submit', (e) => {
       usermail: document.querySelector("#usermail").value,
       adress: document.querySelector("#adress").value,
       city: document.querySelector("#city").value
+    
     }
+    localStorage.setItem('username', document.querySelector('#username').value)
     
     const send = {
       cart,
       contact
-    }
-
+    };
+  
+    
     
  fetch("http://localhost:3000/api/furniture/order")
 .then(response => response.json())
@@ -361,8 +364,3 @@ form.city.addEventListener('change', function() {
   };
   
 
-
-
-
-
-  
