@@ -197,4 +197,12 @@ button.clear_product {
     align-items: center;
 }
 
+/*Couleur violette pour les titres h1 page produit et confirmation*/
+h1 {
+    color: #760af1;
+}
 
+.home h3 {
+    color: #fab114;
+    font-weight: bold;
+}
