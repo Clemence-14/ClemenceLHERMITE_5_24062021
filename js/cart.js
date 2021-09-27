@@ -104,7 +104,12 @@ orderForm.addEventListener('submit', (e) => {
       city: document.querySelector("#city").value
     
     }
+
+    //Mise en place dans le local storage du nom et prénom de l'utilisateur
     localStorage.setItem('username', document.querySelector('#username').value)
+    localStorage.setItem('userlastname', document.querySelector('#userlastname').value)
+    localStorage.setItem('total_price', document.querySelector('#total_price').value)
+    
     
     const send = {
       cart,
@@ -113,7 +118,13 @@ orderForm.addEventListener('submit', (e) => {
   
     
     
- fetch("http://localhost:3000/api/furniture/order")
+ fetch("http://localhost:3000/api/furniture/order",
+{
+method: 'POST',
+body:JSON.stringify(send)
+})
+
+ 
 .then(response => response.json())
 .then(response => {
   if (Object.entries(response).length === 0) {
@@ -127,17 +138,11 @@ orderForm.addEventListener('submit', (e) => {
 })
 .catch(error => alert("Erreur : " + error));
       
-
-
-
   //alert, la commande est validée et l'utilisateur va être redirigé
     alert('Votre commande est validée. Vous allez être redirigé vers la page de confirmation');
 });
     
     
-
-
-
 //////////FIN//////////
 
 
@@ -164,7 +169,7 @@ const totalPrix = prixTotal.reduce(reducer, 0);
 
 
 //Déclaration de la variable pour pouvoir y mettre les prix qui sont présents dans le panier
-const totalPrice = document.getElementById('total-price').innerHTML = "Prix total :" + totalPrix + "€";
+const totalPrice = document.getElementById('total_price').innerHTML = "Prix total :" + totalPrix + "€";
 console.log(totalPrice)
   
 
@@ -188,7 +193,6 @@ clear_product.addEventListener('click', (e) => {
   //removeItem pour vider le local storage
   localStorage.removeItem('cart');
 
-  
 })
 
 
