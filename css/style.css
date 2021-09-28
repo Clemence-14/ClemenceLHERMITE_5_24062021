@@ -118,7 +118,7 @@ h2.form {
     margin-right: auto;
 }
 
-#username, #userlastname, #usermail, #phone, #adress, #city {
+#firstName, #lastName, #email, #address, #city {
     background-color: #ffffffab;
     margin-bottom: 1rem;
 }
@@ -197,12 +197,38 @@ button.clear_product {
     align-items: center;
 }
 
-/*Couleur violette pour les titres h1 page produit et confirmation*/
-h1 {
-    color: #760af1;
+/*Dégradé de couleur de fond pour la page confirmation*/
+#main-container {
+    background: linear-gradient(#F0A71F, #8830EC);
+    padding: 1rem;
 }
 
-.home h3 {
-    color: #fab114;
+/*Changement de couleur, de police et placement du h1 commande confirmée!*/
+#main-container h1 {
+    color: #8830EC;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    padding-top: 1rem;
+}
+
+/*Changement de la police, de la couleur pour le message de remerciement*/
+h2.order {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    padding-top: 1rem;
+    color: #e8d6fc;
+}
+
+/*Changement de couleur, de taille et padding pour les paragraphes de lapage confirmatioh*/
+#main-container p {
+    font-size: larger;
     font-weight: bold;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    color: #ffd780;
+}
+
+/*Coloration en orange du lien retour à la page d'accueil*/
+.home h3 {
+    color: #F0A71F;
+    font-weight: bold;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
