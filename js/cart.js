@@ -97,18 +97,18 @@ orderForm.addEventListener('submit', (e) => {
 
     //Récupération des valeurs du formulaire
     const contact = {
-      username: document.querySelector("#username").value,
-      userlastname: document.querySelector("#userlastname").value,
-      usermail: document.querySelector("#usermail").value,
-      adress: document.querySelector("#adress").value,
+      firstName: document.querySelector("#firstName").value,
+      lastName: document.querySelector("#lastName").value,
+      email: document.querySelector("#email").value,
+      address: document.querySelector("#address").value,
       city: document.querySelector("#city").value
     
     }
 
-    //Mise en place dans le local storage du nom et prénom de l'utilisateur
-    localStorage.setItem('username', document.querySelector('#username').value)
-    localStorage.setItem('userlastname', document.querySelector('#userlastname').value)
-    localStorage.setItem('total_price', document.querySelector('#total_price').value)
+    //Mise en place dans le local storage du nom, prénom de l'utilisateur ainsi que le prix total
+    localStorage.setItem('firstName', document.querySelector('#firstName').value)
+    localStorage.setItem('lastName', document.querySelector('#lastName').value)
+    localStorage.setItem('totalPrix', JSON.stringify(totalPrix))
     
     
     const send = {
@@ -142,7 +142,7 @@ body:JSON.stringify(send)
     alert('Votre commande est validée. Vous allez être redirigé vers la page de confirmation');
 });
     
-    
+   
 //////////FIN//////////
 
 
@@ -158,8 +158,9 @@ for (let m = 0; m < cart.length; m++) {
 
 //Mettre les prix du panier dans la variable prixTotal
   prixTotal.push(prixProduit)
-
-  console.log(prixTotal);
+  
+  console.log(prixTotal)
+  
   
 }
 
@@ -204,7 +205,7 @@ let form = document.querySelector('#orderForm');
 /////VALIDATION EMAIL/////
 
 //Ecouter la modification de l'email
-form.usermail.addEventListener('change', function() {
+form.email.addEventListener('change', function() {
     validUserMail(this);
 });
 
@@ -237,7 +238,7 @@ const validUserMail = function(inputUserMail) {
 
 
 //Ecouter la modification du nom et prénom
-form.username.addEventListener('change', function() {
+form.firstName.addEventListener('change', function() {
   validUserName(this);
 });
 
@@ -268,7 +269,7 @@ if(testName) {
 
 /////VALIDATION PRENOM/////
 //Ecouter la modification du nom et prénom
-form.userlastname.addEventListener('change', function() {
+form.lastName.addEventListener('change', function() {
   validUserLastName(this);
 });
 
@@ -302,7 +303,7 @@ if(testLastName) {
 
 
 //Ecouter la modification de l'adresse
-form.adress.addEventListener('change', function() {
+form.address.addEventListener('change', function() {
     validAdress(this);
   });
   
