@@ -109,6 +109,7 @@ orderForm.addEventListener('submit', (e) => {
     localStorage.setItem('firstName', document.querySelector('#firstName').value)
     localStorage.setItem('lastName', document.querySelector('#lastName').value)
     localStorage.setItem('totalPrix', JSON.stringify(totalPrix))
+    localStorage.setItem('commande', JSON.stringify(commande))
     
     
     const send = {
@@ -118,7 +119,7 @@ orderForm.addEventListener('submit', (e) => {
   
     
     
- fetch("http://localhost:3000/api/furniture/order",
+const promise = fetch("http://localhost:3000/api/furniture/order",
 {
 method: 'POST',
 body:JSON.stringify(send)
@@ -128,9 +129,9 @@ body:JSON.stringify(send)
 .then(response => response.json())
 .then(response => {
   if (Object.entries(response).length === 0) {
+    localStorage.removeItem('cart'),
     window.location.href = 'confirmation.html'
   } else {
-    
     createProduct(response)
   }
 
@@ -144,7 +145,6 @@ body:JSON.stringify(send)
     
    
 //////////FIN//////////
-
 
 
 
@@ -177,7 +177,16 @@ console.log(totalPrice)
 //////////FIN//////////
 
 
+//////////Id produit//////////
+let commande = [];
+for (let n = 0; n < cart.length; n++) {
+  let commandeId = cart[n].id;
 
+  commande.push(commandeId)
+  console.log(commande)
+}
+
+//////////Fin//////////
 
 
 
