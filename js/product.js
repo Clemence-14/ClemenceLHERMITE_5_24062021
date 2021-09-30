@@ -11,7 +11,6 @@ window
     if (Object.entries(response).length === 0) {
       window.alert('pas de produit')
     } else {
-      
       createProduct(response)
     }
   })
@@ -28,17 +27,13 @@ const createProduct = product => {
   productImage.src = product.imageUrl
   productImage.alt = product.name
   
-
   //Edit product price
   const productPrice = document.getElementById('product-price')
   productPrice.innerHTML = product.price/100 + "€" //Passage du prix en centimes en euros
   
-
   //Edit product description
   const productDescription = document.getElementById('product-description')
   productDescription.innerHTML = product.description
-
-  
 
   //Get select of options
   const productOptions = document.getElementById('product-options')
@@ -50,11 +45,10 @@ const createProduct = product => {
     productOption.value = varnish
     productOption.innerHTML = varnish
 
-
-    //Ajouter option pour sélectionner
+  //Ajouter option pour sélectionner
     productOptions.appendChild(productOption) 
+    console.log(productDescription)
   }
-
 
   // On pointe le bouton AddToCart
   const addToCartButton = document.getElementById('cart')
@@ -62,7 +56,6 @@ const createProduct = product => {
   // On ajoute un écouteur d'événement sur le clic
   addToCartButton.addEventListener('click', event => {
     addToCart(product)
-
   })
 }
 
@@ -71,26 +64,20 @@ const addToCart = product => {
   let cart = window.localStorage.getItem('cart')
 
   if (cart === null) {
-    // Si l'objet' n'existe pas en session, on le crée
-    cart = []
+    cart = [] // Si l'objet' n'existe pas en session, on le crée
   } else {
-    // Sinon on le transforme en tableau
-    cart = JSON.parse(cart)
+    cart = JSON.parse(cart) // Sinon on le transforme en tableau
   }
-
-  // On ajoute le produit à notre tableau
-  cart.push({
+  
+  cart.push({  // On ajoute le produit à notre tableau
     id: product._id,
     image: product.imageUrl,
     name: product.name,
     price: product.price,
   })
-console.log(product)
-console.log(JSON.stringify('cart'))
 
   // On transforme le tableau en objet JSON, et on l'ajoute en session
   window.localStorage.setItem('cart', JSON.stringify(cart))
-
   if (
     window.confirm(
       'Le produit a été ajouté au panier. Voulez-vous voir votre panier ?'
