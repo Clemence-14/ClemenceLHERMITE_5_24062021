@@ -6,7 +6,6 @@ console.log(userLastNameProduct)
 
 //Je récupère l'id du span sur la page confirmation.html
 const user_last_name = document.getElementById('user_last_name')
-console.log(user_last_name)
 
 //J'insère le prénom de la personne dans le span user_last_name dédié
 document.querySelector('span#user_last_name').innerText = `${userLastNameProduct}`
@@ -22,7 +21,7 @@ console.log(userNameProduct)
 
 //Je récupère l'id du span sur la page confirmation.html
 const user_name = document.getElementById('user_name')
-console.log(user_name)
+
 
 //J'insère le nom de famille de la personne dans le span user_name dédié
 document.querySelector('span#user_name').innerText = `${userNameProduct}`
@@ -38,7 +37,7 @@ document.querySelector('span#user_name').innerText = `${userNameProduct}`
  
  //Je récupère l'id du span sur la page confirmation.html
  const total_price2 = document.getElementById('total_price2')
- console.log(total_price2)
+ 
  
  //J'insère le prix total dans le span qui lui est dédié
  document.querySelector('span#total_price2').innerText  = `${totalPriceLocal}` + "€"
@@ -51,7 +50,7 @@ console.log(id_commande)
 
 //Je récupère l'id du span sur la page confirmation.html
 const orderId = document.getElementById('orderId')
-console.log(orderId)
+
 
 //J'insère l'id produit dans le span qui lui est dédié
 document.querySelector('span#orderId').innerText = `${id_commande}`
