@@ -9,6 +9,7 @@ const tableProducts = cart => {
     for (const product of cart) {
         
         const productTr = document.createElement('tr')
+        productTr.classList.add('trRow')
 
         const productImageTd = document.createElement('td')
 
@@ -32,8 +33,6 @@ const tableProducts = cart => {
         productPriceTd.appendChild(priceProduct)
         productTr.appendChild(productPriceTd)
 
-
-      
         const productClearTd = document.createElement('td')
         const clearProduct = document.createElement('button')
         const btn_clear = document.createTextNode("Supprimer l'article") //Nommer le bouton 
@@ -41,8 +40,6 @@ const tableProducts = cart => {
         clearProduct.classList.add('clear_product')
         productClearTd.appendChild(clearProduct)
         productTr.appendChild(productClearTd)
-
-   
 
         cartTable.appendChild(productTr)
     }
@@ -63,36 +60,27 @@ if (cart === null) {
 
 
 //////////BOUTON VIDER LE PANIER//////////
-
 //Sélection du bouton vider le panier
 const clear_cart = document.querySelector(".clear_cart");
-
 
 //Suppression de la key cart dans le local storage pour vider entièrement le panier
 clear_cart.addEventListener('click', (e) => {
     e.preventDefault;
 
-    //removeItem pour vider le local storage
-    localStorage.removeItem('cart');
+    localStorage.removeItem('cart');  //removeItem pour vider le local storage
 
-    //alert le panier a été vidé
-    alert('Votre panier va être vidé');
+    alert('Votre panier va être vidé'); //alert le panier a été vidé
 
-    //rechargement de la page panier
-    window.location.href = 'cart.html';
+    window.location.href = 'cart.html'; //rechargement de la page panier
 
 });
-
 //////////FIN//////////
 
 
-
 //////////BOUTON CONFIRMATION DE LA COMMANDE//////////
-//Sélection du bouton confirmer la commande
-const orderForm = document.getElementById('orderForm');
+const orderForm = document.getElementById('orderForm'); //Sélection du bouton confirmer la commande
 
-//Ajout d'un écouteur sur le click du bouton confirmation
-orderForm.addEventListener('submit', (e) => {
+orderForm.addEventListener('submit', (e) => {  //Ajout d'un écouteur sur le click du bouton confirmation
     e.preventDefault;
 
     //Récupération des valeurs du formulaire
@@ -102,7 +90,6 @@ orderForm.addEventListener('submit', (e) => {
       email: document.querySelector("#email").value,
       address: document.querySelector("#address").value,
       city: document.querySelector("#city").value
-    
     }
 
     //Mise en place dans le local storage du nom, prénom de l'utilisateur ainsi que le prix total
@@ -111,21 +98,16 @@ orderForm.addEventListener('submit', (e) => {
     localStorage.setItem('totalPrix', JSON.stringify(totalPrix))
     localStorage.setItem('commande', JSON.stringify(commande))
     
-    
-    const send = {
+    const send = { // Création de l'objet pour la requête à envoyer au serveur
       cart,
       contact
     };
   
-    
-    
-const promise = fetch("http://localhost:3000/api/furniture/order",
+fetch("http://localhost:3000/api/furniture/order",
 {
 method: 'POST',
 body:JSON.stringify(send)
 })
-
- 
 .then(response => response.json())
 .then(response => {
   if (Object.entries(response).length === 0) {
@@ -134,46 +116,33 @@ body:JSON.stringify(send)
   } else {
     createProduct(response)
   }
-
-    
 })
 .catch(error => alert("Erreur : " + error));
       
   //alert, la commande est validée et l'utilisateur va être redirigé
     alert('Votre commande est validée. Vous allez être redirigé vers la page de confirmation');
 });
-    
-   
 //////////FIN//////////
-
 
 
 //////////PRIX TOTAL//////////
 
 let prixTotal = [];
 
-//Aller chercher les prix dans le panier
-for (let m = 0; m < cart.length; m++) {
+for (let m = 0; m < cart.length; m++) {  //Aller chercher les prix dans le panier
   let prixProduit = cart[m].price/100;
 
-//Mettre les prix du panier dans la variable prixTotal
-  prixTotal.push(prixProduit)
-  
+  prixTotal.push(prixProduit)  //Mettre les prix du panier dans la variable prixTotal
   console.log(prixTotal)
-  
-  
 }
 
 //Additionner les prix dans le tableau de la variable prixTotal
 const reducer = (accumulator, currentValue) => accumulator + currentValue;
 const totalPrix = prixTotal.reduce(reducer, 0);
 
-
 //Déclaration de la variable pour pouvoir y mettre les prix qui sont présents dans le panier
 const totalPrice = document.getElementById('total_price').innerHTML = "Prix total :" + totalPrix + "€";
-console.log(totalPrice)
   
-
 //////////FIN//////////
 
 
@@ -189,79 +158,41 @@ for (let n = 0; n < cart.length; n++) {
 //////////Fin//////////
 
 
-
 //////////BOUTON SUPPRIMER ARTICLE//////////
 const clear_product = document.querySelector(".clear_product");
-
 
 clear_product.addEventListener('click', (e) => {
   e.preventDefault;
 
-  const thead = document.getElementById('thead').deleteRow([1]); //Supprimer une ligne du tableau qui présente les articles page panier
+  const thead = document.getElementById('thead').deleteRow(-1) //Supprimer une ligne du tableau qui présente les articles page panier
   console.log(thead)
   
-  //removeItem pour vider le local storage
-  localStorage.removeItem('cart');
-
+localStorage.removeItem('cart');  //removeItem pour vider le local storage
+alert('Votre article va être supprimé')
 })
 
 
 //////////PARTIE FORMULAIRE//////////
 
-
 let form = document.querySelector('#orderForm');
-
-/////VALIDATION EMAIL/////
-
-//Ecouter la modification de l'email
-form.email.addEventListener('change', function() {
-    validUserMail(this);
-});
-
-const validUserMail = function(inputUserMail) {
-  //Creation de la reg exp pour validation email
-  let userMailRegExp = new RegExp (
-    '^[a-zA-Z0-9.-]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$','g' 
-  );
-
-  let testMail = userMailRegExp.test(inputUserMail.value);
-  console.log(testMail)
-
-  //Récupération de la balise small
-  let small = inputUserMail.nextElementSibling;
-
-    //On teste l'expression régulière
-  if(testMail) {
-    small.innerHTML = 'Mail valide';
-    small.classList.remove('text-danger')
-    small.classList.add('text-success');
-  } else {
-    small.innerHTML = 'Mail non valide';
-    small.classList.remove('text-success');
-    small.classList.add('text-danger');
-  }
-};
-
 
 /////VALIDATION NOM/////
 
-
-//Ecouter la modification du nom et prénom
+//Ecouter la modification du nom 
 form.firstName.addEventListener('change', function() {
   validUserName(this);
 });
 
 const validUserName = function(inputUserName) {
-    //Création de la regexp pour la validation nom et prénom
+    //Création de la regexp pour la validation nom 
     let userNameRegExp = new RegExp (
-        '^[a-z ,.-]+$', 'i'
+        '^[a-zA-Z ,.-]+$', 'i'
     );
 
     let testName = userNameRegExp.test(inputUserName.value);
     console.log(testName)
 
-
-    //Récupération de la balise small
+  //Récupération de la balise small
   let small_name = inputUserName.nextElementSibling;
 
   //On teste l'expression régulière
@@ -276,23 +207,24 @@ if(testName) {
 }
 };
 
+
 /////VALIDATION PRENOM/////
-//Ecouter la modification du nom et prénom
+
+//Ecouter la modification du prénom
 form.lastName.addEventListener('change', function() {
   validUserLastName(this);
 });
 
 const validUserLastName = function(inputUserLastName) {
-    //Création de la regexp pour la validation nom et prénom
+    //Création de la regexp pour la validation prénom
     let userLastNameRegExp = new RegExp (
-        '^[a-z ,.-]+$', 'i'
+        '^[a-zA-Z ,.-]+$', 'i'
     );
 
     let testLastName = userLastNameRegExp.test(inputUserLastName.value);
     console.log(testLastName)
 
-
-    //Récupération de la balise small
+  //Récupération de la balise small
   let small_lastName = inputUserLastName.nextElementSibling;
 
   //On teste l'expression régulière
@@ -308,8 +240,38 @@ if(testLastName) {
 };
 
 
-  /////VALIDATION Adresse/////
+/////VALIDATION EMAIL/////
 
+//Ecouter la modification de l'email
+form.email.addEventListener('change', function() {
+  validUserMail(this);
+});
+
+const validUserMail = function(inputUserMail) {
+//Creation de la reg exp pour validation email
+let userMailRegExp = new RegExp (
+  '^[a-zA-Z0-9.-]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$','g' 
+);
+
+let testMail = userMailRegExp.test(inputUserMail.value);
+console.log(testMail)
+
+//Récupération de la balise small
+let small = inputUserMail.nextElementSibling;
+
+  //On teste l'expression régulière
+if(testMail) {
+  small.innerHTML = 'Mail valide';
+  small.classList.remove('text-danger')
+  small.classList.add('text-success');
+} else {
+  small.innerHTML = 'Mail non valide';
+  small.classList.remove('text-success');
+  small.classList.add('text-danger');
+}
+};
+
+  /////VALIDATION Adresse/////
 
 //Ecouter la modification de l'adresse
 form.address.addEventListener('change', function() {
@@ -319,15 +281,14 @@ form.address.addEventListener('change', function() {
   const validAdress = function(inputAdress) {
       //Création de la regexp pour la validation de l'adresse
       let adressRegExp = new RegExp (
-        '^[0-9]{1,3}(?:(?:[,. ]?){1}[-a-zA-Zàâäéèêëïîôöùûüç]+)*$', 
+        '^([1-9]?[0-9])|100(?:(?:[,. ]?){1}[-a-zA-Zàâäéèêëïîôöùûüç]+)*$', 
       );
 
       let testAdress = adressRegExp.test(inputAdress.value);
       
         console.log(testAdress)
       
-  
-      //Récupération de la balise small
+    //Récupération de la balise small
     let small_adress = inputAdress.nextElementSibling;
   
     //On teste l'expression régulière
@@ -343,9 +304,7 @@ form.address.addEventListener('change', function() {
   };
 
 
-
   /////VALIDATION VILLE/////
-
 
 //Ecouter la modification de la ville
 form.city.addEventListener('change', function() {
@@ -361,8 +320,7 @@ form.city.addEventListener('change', function() {
       let testCity = cityNameRegExp.test(inputCity.value);
       console.log(testCity)
   
-  
-      //Récupération de la balise small
+    //Récupération de la balise small
     let small_city = inputCity.nextElementSibling;
   
     //On teste l'expression régulière
