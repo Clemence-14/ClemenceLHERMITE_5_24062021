@@ -1,7 +1,6 @@
-// Get id from url
+// Prendre l'id de l'url
 const queryString = window.location.search
 const urlParams = new URLSearchParams(queryString)
-
 const productId = urlParams.get('id')
 
 window
@@ -11,57 +10,52 @@ window
     if (Object.entries(response).length === 0) {
       window.alert('pas de produit')
     } else {
-      createProduct(response)
+      createProduct(response); console.log(response)
     }
   })
   .catch(error => window.alert('Erreur : ' + error))
 
 const createProduct = product => {
-  
-  // Edit product name
+  //Éditer product name
   const productName = document.getElementById('product-name')
   productName.innerHTML = product.name
 
-  // Edit product image
+  //Éditer product image
   const productImage = document.getElementById('product-image')
   productImage.src = product.imageUrl
   productImage.alt = product.name
   
-  //Edit product price
+  //Éditer product price
   const productPrice = document.getElementById('product-price')
   productPrice.innerHTML = product.price/100 + "€" //Passage du prix en centimes en euros
   
-  //Edit product description
+  //Éditer product description
   const productDescription = document.getElementById('product-description')
   productDescription.innerHTML = product.description
 
-  //Get select of options
+  //Prendre le select d'options
   const productOptions = document.getElementById('product-options')
 
   //Parcourir le tableau des options
   for (const varnish of product.varnish) {
-    //Edit element HTML <option>
+    //Éditer element HTML <option>
     const productOption = document.createElement('option')
     productOption.value = varnish
     productOption.innerHTML = varnish
 
   //Ajouter option pour sélectionner
     productOptions.appendChild(productOption) 
-    console.log(productDescription)
   }
 
-  // On pointe le bouton AddToCart
-  const addToCartButton = document.getElementById('cart')
+  const addToCartButton = document.getElementById('cart') // On pointe le bouton AddToCart
 
-  // On ajoute un écouteur d'événement sur le clic
-  addToCartButton.addEventListener('click', event => {
+  addToCartButton.addEventListener('click', event => {  // On ajoute un écouteur d'événement sur le clic
     addToCart(product)
   })
 }
 
 const addToCart = product => {
-  // On récupère l'objet cart en session
-  let cart = window.localStorage.getItem('cart')
+  let cart = window.localStorage.getItem('cart') // On récupère l'objet cart en session
 
   if (cart === null) {
     cart = [] // Si l'objet' n'existe pas en session, on le crée
