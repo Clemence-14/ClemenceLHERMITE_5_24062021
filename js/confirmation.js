@@ -22,7 +22,6 @@ console.log(userNameProduct)
 //Je récupère l'id du span sur la page confirmation.html
 const user_name = document.getElementById('user_name')
 
-
 //J'insère le nom de famille de la personne dans le span user_name dédié
 document.querySelector('span#user_name').innerText = `${userNameProduct}`
 
@@ -38,19 +37,17 @@ document.querySelector('span#user_name').innerText = `${userNameProduct}`
  //Je récupère l'id du span sur la page confirmation.html
  const total_price2 = document.getElementById('total_price2')
  
- 
  //J'insère le prix total dans le span qui lui est dédié
  document.querySelector('span#total_price2').innerText  = `${totalPriceLocal}` + "€"
 
+////Fin pour le prix total////
 
- ////Id du ou des produits
- //Je récupère dans le local storage la key commande qui contient l'id du produit
+//Je récupère dans le local storage la key commande qui contient l'id du produit
 let id_commande = window.localStorage.getItem('commande')
 console.log(id_commande)
 
 //Je récupère l'id du span sur la page confirmation.html
 const orderId = document.getElementById('orderId')
-
 
 //J'insère l'id produit dans le span qui lui est dédié
 document.querySelector('span#orderId').innerText = `${id_commande}`
