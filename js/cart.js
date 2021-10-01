@@ -157,7 +157,6 @@ for (let n = 0; n < cart.length; n++) {
 
 //////////Fin//////////
 
-
 //////////BOUTON SUPPRIMER ARTICLE//////////
 const clear_product = document.querySelector(".clear_product");
 
@@ -169,7 +168,11 @@ clear_product.addEventListener('click', (e) => {
   
 localStorage.removeItem('cart');  //removeItem pour vider le local storage
 alert('Votre article va être supprimé')
+
 })
+
+
+
 
 
 //////////PARTIE FORMULAIRE//////////
@@ -178,7 +181,7 @@ let form = document.querySelector('#orderForm');
 
 /////VALIDATION NOM/////
 
-//Ecouter la modification du nom 
+//Ecouter la modification du nom, action qu’on peut détecter car le système va nous informer qu’elle se produit 
 form.firstName.addEventListener('change', function() {
   validUserName(this);
 });
@@ -210,7 +213,7 @@ if(testName) {
 
 /////VALIDATION PRENOM/////
 
-//Ecouter la modification du prénom
+//Ecouter la modification du prénom, action qu’on peut détecter car le système va nous informer qu’elle se produit 
 form.lastName.addEventListener('change', function() {
   validUserLastName(this);
 });
@@ -242,7 +245,7 @@ if(testLastName) {
 
 /////VALIDATION EMAIL/////
 
-//Ecouter la modification de l'email
+//Ecouter la modification de l'email, action qu’on peut détecter car le système va nous informer qu’elle se produit 
 form.email.addEventListener('change', function() {
   validUserMail(this);
 });
@@ -273,7 +276,7 @@ if(testMail) {
 
   /////VALIDATION Adresse/////
 
-//Ecouter la modification de l'adresse
+//Ecouter la modification de l'adresse, action qu’on peut détecter car le système va nous informer qu’elle se produit 
 form.address.addEventListener('change', function() {
     validAdress(this);
   });
@@ -306,7 +309,7 @@ form.address.addEventListener('change', function() {
 
   /////VALIDATION VILLE/////
 
-//Ecouter la modification de la ville
+//Ecouter la modification de la ville, action qu’on peut détecter car le système va nous informer qu’elle se produit 
 form.city.addEventListener('change', function() {
     validCity(this);
   });
