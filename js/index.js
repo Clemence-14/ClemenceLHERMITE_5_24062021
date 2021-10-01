@@ -1,16 +1,16 @@
 fetch("http://localhost:3000/api/furniture")
 .then(response => response.json())
 .then(response => {
-    createThumbnails(response);
+    createThumbnails(response);   console.log(response)
 })
 .catch(error => alert("Erreur : " + error));
 
 function createThumbnails(products) {
     const productsContainer = document.getElementById('products')  //Récupération de la div avec l'id products
-
+    
     for (const product of products) {
         console.log(product)
-
+    
     //Création du container product
     const productContainer = document.createElement('div')
     productContainer.classList.add('product')
