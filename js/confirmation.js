@@ -1,13 +1,13 @@
 ////Insertion du nom de famille pour remercier de la commande sur la page de confirmation
 
-//Je récupère dans le local storage le user last name(prénom)
+//Je récupère dans le local storage le last name
 let userLastNameProduct = window.localStorage.getItem('lastName')
 console.log(userLastNameProduct)
 
 //Je récupère l'id du span sur la page confirmation.html
 const user_last_name = document.getElementById('user_last_name')
 
-//J'insère le prénom de la personne dans le span user_last_name dédié
+//J'insère le nom de la personne dans le span user_last_name dédié
 document.querySelector('span#user_last_name').innerText = `${userLastNameProduct}`
 
 ////Fin pour le nom de famille////
@@ -15,14 +15,14 @@ document.querySelector('span#user_last_name').innerText = `${userLastNameProduct
 
 ////Insertion du prénom pour remercier de la commande sur la page de confirmation////
 
-//Je récupère dans le local storage le username(nom de famille)
+//Je récupère dans le local storage le first name
 let userNameProduct = window.localStorage.getItem('firstName')
 console.log(userNameProduct)
 
 //Je récupère l'id du span sur la page confirmation.html
 const user_name = document.getElementById('user_name')
 
-//J'insère le nom de famille de la personne dans le span user_name dédié
+//J'insère le prénom de la personne dans le span user_name dédié
 document.querySelector('span#user_name').innerText = `${userNameProduct}`
 
 ////Fin pour le prénom////
@@ -42,6 +42,8 @@ document.querySelector('span#user_name').innerText = `${userNameProduct}`
 
 ////Fin pour le prix total////
 
+////Id de la commande////
+
 //Je récupère dans le local storage la key commande qui contient l'id du produit
 let id_commande = window.localStorage.getItem('commande')
 console.log(id_commande)
@@ -52,4 +54,4 @@ const orderId = document.getElementById('orderId')
 //J'insère l'id produit dans le span qui lui est dédié
 document.querySelector('span#orderId').innerText = `${id_commande}`
 
-localStorage.clear()
+localStorage.clear()  //On vide complétement le local storage des informations précédentes
