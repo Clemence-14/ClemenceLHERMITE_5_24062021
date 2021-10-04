@@ -1,4 +1,4 @@
-// Prendre l'id de l'url
+// Je récupère l'id produit dans l'url grâce à la méthode URLSearchParams
 const queryString = window.location.search
 const urlParams = new URLSearchParams(queryString)
 const productId = urlParams.get('id')
@@ -43,11 +43,12 @@ const createProduct = product => {
     productOption.value = varnish
     productOption.innerHTML = varnish
 
-  //Ajouter option pour sélectionner
+  //Ajouter option au select
     productOptions.appendChild(productOption) 
   }
 
-  const addToCartButton = document.getElementById('cart') // On pointe le bouton AddToCart
+  
+  const addToCartButton = document.getElementById('cart') // On pointe le bouton cart
 
   addToCartButton.addEventListener('click', event => {  // On ajoute un écouteur d'événement sur le clic
     addToCart(product)
@@ -71,13 +72,13 @@ const addToCart = product => {
   })
 
   // On transforme le tableau en objet JSON, et on l'ajoute en session
-  window.localStorage.setItem('cart', JSON.stringify(cart))
+  window.localStorage.setItem('cart', JSON.stringify(cart)) 
   if (
     window.confirm(
       'Le produit a été ajouté au panier. Voulez-vous voir votre panier ?'
     )
   ) {
-    window.location.href = 'cart.html'
+    window.location.href = 'cart.html'  //On redirige vers la page panier
   }
 }
 
