@@ -1,5 +1,5 @@
-fetch("http://localhost:3000/api/furniture")
-.then(response => response.json())
+fetch("http://localhost:3000/api/furniture") //Retourne une promesse contenant la réponse
+.then(response => response.json())  //On indique le format de réponse souhaité
 .then(response => {
     createThumbnails(response);   console.log(response)
 })
@@ -8,7 +8,7 @@ fetch("http://localhost:3000/api/furniture")
 function createThumbnails(products) {
     const productsContainer = document.getElementById('products')  //Récupération de la div avec l'id products
     
-    for (const product of products) {
+    for (const product of products) {  //On parcourt l'objet et les valeurs de ses différentes propriétés
         console.log(product)
     
     //Création du container product
