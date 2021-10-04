@@ -46,7 +46,7 @@ const tableProducts = cart => {
 }
 
 if (cart === null) {
-    const infoMessage = document.getElementById('info')
+    const infoMessage = document.getElementById('info') //On récupère l'id info du paragraphe
     infoMessage.innerHTML = 'Votre panier est vide'
 
     const orderForm = document.getElementById('orderForm')
@@ -136,7 +136,7 @@ for (let m = 0; m < cart.length; m++) {  //Aller chercher les prix dans le panie
   console.log(prixTotal)
 }
 
-//Additionner les prix dans le tableau de la variable prixTotal
+//Additionner les prix dans le tableau de la variable prixTotal avec la méthode reduce
 const reducer = (accumulator, currentValue) => accumulator + currentValue;
 const totalPrix = prixTotal.reduce(reducer, 0);
 
@@ -159,7 +159,7 @@ for (let n = 0; n < cart.length; n++) {
 
 //////////BOUTON SUPPRIMER ARTICLE//////////
 const clear_product = document.querySelector(".clear_product");
-
+console.log(clear_product)
 clear_product.addEventListener('click', (e) => {
   e.preventDefault;
 
@@ -182,8 +182,8 @@ let form = document.querySelector('#orderForm');
 /////VALIDATION NOM/////
 
 //Ecouter la modification du nom, action qu’on peut détecter car le système va nous informer qu’elle se produit 
-form.firstName.addEventListener('change', function() {
-  validUserName(this);
+form.lastName.addEventListener('change', function() {
+  validUserName(this); //Appeler une fonction et lui passer un paramètre 
 });
 
 const validUserName = function(inputUserName) {
@@ -214,31 +214,31 @@ if(testName) {
 /////VALIDATION PRENOM/////
 
 //Ecouter la modification du prénom, action qu’on peut détecter car le système va nous informer qu’elle se produit 
-form.lastName.addEventListener('change', function() {
-  validUserLastName(this);
+form.firstName.addEventListener('change', function() {
+  validUserfirstName(this);
 });
 
-const validUserLastName = function(inputUserLastName) {
+const validUserfirstName = function(inputUserFirstName) {
     //Création de la regexp pour la validation prénom
-    let userLastNameRegExp = new RegExp (
-        '^[a-zA-Z ,.-]+$', 'i'
+    let userFirstNameRegExp = new RegExp (
+        '^[a-zA-Z ,.-é]+$', 'i'
     );
 
-    let testLastName = userLastNameRegExp.test(inputUserLastName.value);
-    console.log(testLastName)
+    let testfirstName = userFirstNameRegExp.test(inputUserFirstName.value);
+    console.log(testfirstName)
 
   //Récupération de la balise small
-  let small_lastName = inputUserLastName.nextElementSibling;
+  let small_firstName = inputUserFirstName.nextElementSibling;
 
   //On teste l'expression régulière
-if(testLastName) {
-  small_lastName.innerHTML = 'Prénom Valide';
-  small_lastName.classList.remove('text-danger')
-  small_lastName.classList.add('text-success');
+if(testfirstName) {
+  small_firstName.innerHTML = 'Prénom Valide';
+  small_firstName.classList.remove('text-danger')
+  small_firstName.classList.add('text-success');
 } else {
-  small_lastName.innerHTML = 'Prénom non valide';
-  small_lastName.classList.remove('text-success');
-  small_lastName.classList.add('text-danger');
+  small_firstName.innerHTML = 'Prénom non valide';
+  small_firstName.classList.remove('text-success');
+  small_firstName.classList.add('text-danger');
 }
 };
 
