@@ -1,7 +1,7 @@
-// Je récupère l'id produit dans l'url grâce à la méthode URLSearchParams
+// Je récupère l'id produit dans l'url grâce à la méthode URLSearchParams pour effectuer la requête
 const queryString = window.location.search
 const urlParams = new URLSearchParams(queryString)
-const productId = urlParams.get('id')
+const productId = urlParams.get('id') //Constante qui contient l'id
 
 window
   .fetch('http://localhost:3000/api/furniture/' + productId)
@@ -15,7 +15,7 @@ window
   })
   .catch(error => window.alert('Erreur : ' + error))
 
-const createProduct = product => {
+const createProduct = product => {  //Fonction pour afficher les produits
   //Éditer product name
   const productName = document.getElementById('product-name')
   productName.innerHTML = product.name
@@ -56,10 +56,10 @@ const createProduct = product => {
 }
 
 const addToCart = product => {
-  let cart = window.localStorage.getItem('cart') // On récupère l'objet cart en session
+  let cart = window.localStorage.getItem('cart') // On récupère l'objet cart dans le local storage
 
   if (cart === null) {
-    cart = [] // Si l'objet' n'existe pas en session, on le crée
+    cart = [] // Si l'objet' n'existe pas dans le local storage, on le crée
   } else {
     cart = JSON.parse(cart) // Sinon on le transforme en tableau
   }
@@ -71,7 +71,7 @@ const addToCart = product => {
     price: product.price,
   })
 
-  // On transforme le tableau en objet JSON, et on l'ajoute en session
+  // On transforme le tableau en objet JSON, et on l'ajoute dans le local storage
   window.localStorage.setItem('cart', JSON.stringify(cart)) 
   if (
     window.confirm(
