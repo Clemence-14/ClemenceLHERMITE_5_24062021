@@ -63,7 +63,7 @@ if (cart === null) {
 //Sélection du bouton vider le panier
 const clear_cart = document.querySelector(".clear_cart");
 
-//Suppression de la key cart dans le local storage pour vider entièrement le panier
+//Suppression de la key cart dans le local storage pour vider entièrement le panier//
 clear_cart.addEventListener('click', (e) => {
     e.preventDefault;
 
@@ -159,7 +159,7 @@ for (let n = 0; n < cart.length; n++) {
 
 //////////BOUTON SUPPRIMER ARTICLE//////////
 const clear_product = document.querySelector(".clear_product");
-console.log(clear_product)
+
 clear_product.addEventListener('click', (e) => {
   e.preventDefault;
 
@@ -221,7 +221,7 @@ form.firstName.addEventListener('change', function() {
 const validUserfirstName = function(inputUserFirstName) {
     //Création de la regexp pour la validation prénom
     let userFirstNameRegExp = new RegExp (
-        '^[a-zA-Z ,.-é]+$', 'i'
+        '^[a-zA-Z ,.-]+$', 'i'
     );
 
     let testfirstName = userFirstNameRegExp.test(inputUserFirstName.value);
