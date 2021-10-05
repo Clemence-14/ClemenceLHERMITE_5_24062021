@@ -3,9 +3,9 @@ fetch("http://localhost:3000/api/furniture") //Retourne une promesse contenant l
 .then(response => {
     createThumbnails(response);   console.log(response)
 })
-.catch(error => alert("Erreur : " + error));
+.catch(error => alert("Erreur : " + error)); //Gestion des erreurs
 
-function createThumbnails(products) {
+function createThumbnails(products) {  //Fonction pour afficher les produits
     const productsContainer = document.getElementById('products')  //Récupération de la div avec l'id products
     
     for (const product of products) {  //On parcourt l'objet et les valeurs de ses différentes propriétés
