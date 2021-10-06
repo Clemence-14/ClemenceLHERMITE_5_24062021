@@ -51,11 +51,11 @@ const createProduct = product => {  //Fonction pour afficher les produits
   const addToCartButton = document.getElementById('cart') // On pointe le bouton cart
 
   addToCartButton.addEventListener('click', event => {  // On ajoute un écouteur d'événement sur le clic
-    addToCart(product)
+    addToCart(product) 
   })
 }
 
-const addToCart = product => {
+const addToCart = product => {  
   let cart = window.localStorage.getItem('cart') // On récupère l'objet cart dans le local storage
 
   if (cart === null) {
