@@ -33,14 +33,6 @@ const tableProducts = cart => {
         productPriceTd.appendChild(priceProduct)
         productTr.appendChild(productPriceTd)
 
-        const productClearTd = document.createElement('td')
-        const clearProduct = document.createElement('button')
-        const btn_clear = document.createTextNode("Supprimer l'article") //Nommer le bouton 
-        clearProduct.appendChild(btn_clear);  //Ajouter le texte au bouton                             
-        clearProduct.classList.add('clear_product')
-        productClearTd.appendChild(clearProduct)
-        productTr.appendChild(productClearTd)
-
         cartTable.appendChild(productTr)
     }
 }
@@ -156,20 +148,6 @@ for (let n = 0; n < cart.length; n++) {
 }
 
 //////////Fin//////////
-
-//////////BOUTON SUPPRIMER ARTICLE//////////
-const clear_product = document.querySelector(".clear_product");
-
-clear_product.addEventListener('click', (e) => {
-  e.preventDefault;
-
-  const thead = document.getElementById('thead').deleteRow(-1) //Supprimer une ligne du tableau qui présente les articles page panier
-  console.log(thead)
-  
-localStorage.removeItem('cart');  //removeItem pour vider le local storage
-alert('Votre article va être supprimé')
-
-})
 
 
 
