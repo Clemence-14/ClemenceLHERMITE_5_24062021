@@ -171,12 +171,6 @@ table {
     text-align: center;
   }
 
-/*Mise en forme du bouton supprimer sur la page panier*/
-button.clear_product {
-    background-color: rgb(219, 180, 252);
-}
-
-
 /*Mise en forme du bouton vider le panier sur la page panier*/
 .clear_cart {
     background-color: rgb(187, 106, 253);
